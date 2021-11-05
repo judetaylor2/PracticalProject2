@@ -1,5 +1,7 @@
 # PracticalProject2
 
+This repository contains the unity project files for my FPS Game.
+
 
 
 Assets Used:
