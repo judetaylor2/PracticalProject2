@@ -5,7 +5,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     CharacterController controller;
-    public float moveSpeed, gravity, jumpHeight;
+    public float normalSpeed, duckSpeed, normalHeight, duckHeight ,gravity, jumpHeight;
+
+    float moveSpeed, playerHeight;
 
     public Transform groundCheck;
     public float groundDistance = 0.4f;
@@ -18,6 +20,9 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
+
+        moveSpeed = normalSpeed;
+        transform.localScale = new Vector3(transform.localScale.x, duckHeight, transform.localScale.z);
     }
 
     // Update is called once per frame
@@ -35,6 +40,7 @@ public class PlayerController : MonoBehaviour
 
         Vector3 move = transform.right * x + transform.forward * z;
 
+        //player move
         controller.Move(move * moveSpeed * Time.deltaTime);
 
         if (Input.GetButtonDown("Jump") && isGrounded)
@@ -42,8 +48,21 @@ public class PlayerController : MonoBehaviour
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
         velocity.y += gravity * Time.deltaTime;
-        
+
+        //gravity move
         controller.Move(velocity * Time.deltaTime);
+
+        //player duck
+        if (Input.GetButton("Duck"))
+        {
+            transform.localScale = new Vector3(transform.localScale.x, duckHeight, transform.localScale.z);
+            moveSpeed = duckSpeed;
+        }
+        else
+        {
+            transform.localScale = new Vector3(transform.localScale.x, normalHeight, transform.localScale.z);
+            moveSpeed = normalSpeed;
+        }
 
     }
 }
