@@ -4,64 +4,90 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    CharacterController controller;
-    public float normalSpeed, duckSpeed, normalHeight, duckHeight ,gravity, jumpHeight;
-
-    float moveSpeed, playerHeight;
-
+    //Player
+    Rigidbody rb;
+    public float regularMoveSpeed, duckMoveSpeed, jumpHeight, duckHeight, gravity, forwardJumpMultiplierValue;
+    float moveSpeed, regularHeight, lastActiveInputX, lastActiveInputZ;
+    Vector3 lastGroundedDirectionRight, lastGroundedDirectionForward;
+    
+    float jumpStopWatch, forwardJumpMultiplier;
+    
+    //Ground Check
+    bool isGrounded = true;
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
 
-    Vector3 velocity;
-    bool isGrounded;
 
     // Start is called before the first frame update
     void Start()
     {
-        controller = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
 
-        moveSpeed = normalSpeed;
-        transform.localScale = new Vector3(transform.localScale.x, duckHeight, transform.localScale.z);
+        regularHeight = transform.localScale.y;
+        moveSpeed = regularMoveSpeed;
+
+        forwardJumpMultiplier = forwardJumpMultiplierValue;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-        if (isGrounded && velocity.y < 0)
+        float x = Input.GetAxisRaw("Horizontal");
+        float z = Input.GetAxisRaw("Vertical");
+
+        
+
+        if(Input.GetButtonDown("Duck"))
         {
-            velocity.y = -2f;
+            transform.localScale = new Vector3(1f, duckHeight, 1f);
+            moveSpeed = duckMoveSpeed;
+        }
+        else if(!Input.GetButton("Duck") && isGrounded)
+        {
+            transform.localScale = new Vector3(1f, regularHeight, 1f);
+            moveSpeed = regularMoveSpeed;
         }
 
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-
-        Vector3 move = transform.right * x + transform.forward * z;
-
-        //player move
-        controller.Move(move * moveSpeed * Time.deltaTime);
-
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if(Input.GetButtonDown("Jump") && isGrounded)
         {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            rb.AddForce(-Physics.gravity.y * Vector3.up * jumpHeight);
         }
-        velocity.y += gravity * Time.deltaTime;
 
-        //gravity move
-        controller.Move(velocity * Time.deltaTime);
-
-        //player duck
-        if (Input.GetButton("Duck"))
+        if (rb.velocity.y <= 0 && !isGrounded)
         {
-            transform.localScale = new Vector3(transform.localScale.x, duckHeight, transform.localScale.z);
-            moveSpeed = duckSpeed;
+            rb.AddForce(-Vector3.up * gravity);
+        }
+
+        if (isGrounded)
+        {
+            Vector3 move = transform.right * x + transform.forward * z;
+            rb.AddForce(move.normalized * moveSpeed);
+
+
+            lastActiveInputX = x;
+            lastActiveInputZ = z;
+            lastGroundedDirectionRight = transform.right;
+            lastGroundedDirectionForward = transform.forward;
+
+            jumpStopWatch = 0;
+            forwardJumpMultiplier = forwardJumpMultiplierValue;
         }
         else
         {
-            transform.localScale = new Vector3(transform.localScale.x, normalHeight, transform.localScale.z);
-            moveSpeed = normalSpeed;
+            Vector3 move1 = lastGroundedDirectionRight * lastActiveInputX + lastGroundedDirectionForward * lastActiveInputZ;
+
+            jumpStopWatch += Time.deltaTime;
+            if (jumpStopWatch >= 0.4f && forwardJumpMultiplier > 4.5)
+            {
+                forwardJumpMultiplier --;
+            }
+            
+            rb.AddForce(move1.normalized * rb.velocity.magnitude * forwardJumpMultiplier);
+
+            Debug.Log(forwardJumpMultiplier);
         }
 
     }
