@@ -6,11 +6,11 @@ public class PlayerController : MonoBehaviour
 {
     //Player
     Rigidbody rb;
-    public float regularMoveSpeed, duckMoveSpeed, jumpHeight, duckHeight, gravity, forwardJumpMultiplierValue;
+    public float regularMoveSpeed, duckMoveSpeed, jumpHeight, duckHeight, initialGravity;
     float moveSpeed, regularHeight, lastActiveInputX, lastActiveInputZ;
     Vector3 lastGroundedDirectionRight, lastGroundedDirectionForward;
     
-    float jumpStopWatch, forwardJumpMultiplier;
+    float gravity, gravityStopWatch;
     
     //Ground Check
     bool isGrounded = true;
@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
         regularHeight = transform.localScale.y;
         moveSpeed = regularMoveSpeed;
 
-        forwardJumpMultiplier = forwardJumpMultiplierValue;
+        gravity = initialGravity;
     }
 
     // Update is called once per frame
@@ -39,11 +39,10 @@ public class PlayerController : MonoBehaviour
         float z = Input.GetAxisRaw("Vertical");
 
         
-
         if(Input.GetButtonDown("Duck"))
         {
             transform.localScale = new Vector3(1f, duckHeight, 1f);
-            moveSpeed = duckMoveSpeed;
+            
         }
         else if(!Input.GetButton("Duck") && isGrounded)
         {
@@ -51,44 +50,59 @@ public class PlayerController : MonoBehaviour
             moveSpeed = regularMoveSpeed;
         }
 
-        if(Input.GetButtonDown("Jump") && isGrounded)
-        {
-            rb.AddForce(-Physics.gravity.y * Vector3.up * jumpHeight);
-        }
-
-        if (rb.velocity.y <= 0 && !isGrounded)
-        {
-            rb.AddForce(-Vector3.up * gravity);
-        }
 
         if (isGrounded)
         {
+            //player move
             Vector3 move = transform.right * x + transform.forward * z;
             rb.AddForce(move.normalized * moveSpeed);
 
 
-            lastActiveInputX = x;
-            lastActiveInputZ = z;
+            lastActiveInputX = Input.GetAxis("Horizontal");
+            lastActiveInputZ = Input.GetAxis("Vertical");
             lastGroundedDirectionRight = transform.right;
             lastGroundedDirectionForward = transform.forward;
 
-            jumpStopWatch = 0;
-            forwardJumpMultiplier = forwardJumpMultiplierValue;
+            gravityStopWatch = 0;
+            gravity = initialGravity;
+
+            //only change movespeed when grounded to avoid decrease in midair momentum
+            if (Input.GetButton("Duck"))
+            {
+                moveSpeed = duckMoveSpeed;
+            }
         }
         else
         {
-            Vector3 move1 = lastGroundedDirectionRight * lastActiveInputX + lastGroundedDirectionForward * lastActiveInputZ;
 
-            jumpStopWatch += Time.deltaTime;
-            if (jumpStopWatch >= 0.4f && forwardJumpMultiplier > 4.5)
+            if (rb.velocity.y <= 0 && !isGrounded)
             {
-                forwardJumpMultiplier --;
+                rb.AddForce(-Vector3.up * gravity, ForceMode.Acceleration);
             }
             
-            rb.AddForce(move1.normalized * rb.velocity.magnitude * forwardJumpMultiplier);
+            //gravity acceleration
+            gravityStopWatch += Time.deltaTime;
+            if (gravityStopWatch >= 0.1f && rb.velocity.y <= 0)
+            {
+                gravity += initialGravity / 10;
+            }
+            
+            //forward jump acceleration
+            Vector3 move = lastGroundedDirectionRight * lastActiveInputX + lastGroundedDirectionForward * lastActiveInputZ;
+            
+            rb.AddForce(move.normalized * moveSpeed);
+            //Debug.Log("x: "lastActiveInputX + " z:" + lastActiveInputZ);
 
-            Debug.Log(forwardJumpMultiplier);
         }
 
+    }
+
+    void Update()
+    {
+        //jump in regular update method to avoid inconsistent movement
+        if(Input.GetButtonDown("Jump") && isGrounded)
+        {
+            rb.AddForce(/*-Physics.gravity.y * */Vector3.up * jumpHeight, ForceMode.Acceleration);
+        }
     }
 }
