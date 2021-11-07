@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     float gravity, gravityStopWatch;
     
     //Ground Check
-    bool isGrounded = true;
+    [HideInInspector] public bool isGrounded = true;
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
