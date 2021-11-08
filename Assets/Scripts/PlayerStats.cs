@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -10,6 +12,10 @@ public class PlayerStats : MonoBehaviour
     float previousVelocity;
     Rigidbody rb;
     PlayerController player;
+    public TextMeshProUGUI healthText;
+    public Slider healthBar;
+    public Image healthImage;
+    public Gradient healthColors;
 
     // Start is called before the first frame update
     void Start()
@@ -43,5 +49,14 @@ public class PlayerStats : MonoBehaviour
             //Debug.Log(previousVelocity.y);
             
         }
+    }
+
+    void Update()
+    {
+        healthText.text = health.ToString();
+        
+        healthBar.value = health;
+
+        healthImage.color = healthText.color = healthBar.fillRect.GetComponent<Image>().color = healthColors.Evaluate(healthBar.value / 100);
     }
 }
