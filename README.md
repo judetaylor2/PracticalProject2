@@ -137,3 +137,7 @@ https://assetstore.unity.com/packages/3d/props/weapons/free-low-poly-swords-rpg-
 PrivateVoid, 2021. Starbugs Turrets: Minigun (free):
 https://assetstore.unity.com/packages/3d/props/weapons/starbugs-turrets-minigun-free-194609
 [Accessed on 5th November 2021]
+
+David, Stenfors, 2016. FPS Icons Pack:
+https://assetstore.unity.com/packages/2d/gui/icons/fps-icons-pack-45240
+[Accessed on 8th November 2021]
