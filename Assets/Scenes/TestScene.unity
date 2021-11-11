@@ -513,7 +513,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 325378266}
-  - component: {fileID: 325378267}
   m_Layer: 0
   m_Name: Ground Check Sphere
   m_TagString: Untagged
@@ -535,19 +534,6 @@ Transform:
   m_Father: {fileID: 897566599}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &325378267
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 325378265}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &331465314
 GameObject:
   m_ObjectHideFlags: 0
@@ -1197,6 +1183,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8007036048914765888, guid: ebf7420c5f018c930b7bf21736711d10, type: 3}
+      propertyPath: attackDelay
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: -8007036048914765888, guid: ebf7420c5f018c930b7bf21736711d10, type: 3}
+      propertyPath: radiusTrigger
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: -8007036048914765888, guid: ebf7420c5f018c930b7bf21736711d10, type: 3}
+      propertyPath: playerMask.m_Bits
+      value: 1024
+      objectReference: {fileID: 0}
     - target: {fileID: 4303464852176806568, guid: ebf7420c5f018c930b7bf21736711d10, type: 3}
       propertyPath: m_Name
       value: Enemy1
@@ -1328,9 +1326,9 @@ GameObject:
   - component: {fileID: 897566596}
   - component: {fileID: 897566595}
   - component: {fileID: 897566600}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1465,9 +1463,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 160d226c78e64f3fe84287448e129163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
   Maxhealth: 100
   fallDamageDistance: 18
-  fallDamageMultiplier: 1.5
+  fallDamageMultiplier: 1.25
   damageUITime: 0.000000005
   healthText: {fileID: 2019493592}
   healthBar: {fileID: 98114457}

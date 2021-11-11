@@ -49,7 +49,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 800
   rotateSpeed: 25
+  radiusTrigger: 30
+  attackTrigger: 4
+  attackDelay: 2
+  attackDamage: 7
   patrolTimes: {x: 3, y: 7}
+  playerMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!33 &5273282107285170252
 MeshFilter:
   m_ObjectHideFlags: 0

@@ -133,9 +133,9 @@ GameObject:
   - component: {fileID: 7842624150233207021}
   - component: {fileID: 7842624150233207018}
   - component: {fileID: 7842624150233207009}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -168,6 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 160d226c78e64f3fe84287448e129163, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 0
   Maxhealth: 100
   fallDamageDistance: 18
   fallDamageMultiplier: 1.5

@@ -6,7 +6,7 @@ using TMPro;
 
 public class PlayerStats : MonoBehaviour
 {
-    int health;
+    [HideInInspector] public int health;
     public int Maxhealth = 100, fallDamageDistance = 20;
     public float fallDamageMultiplier = 1, damageUITime = 0.01f;
     float previousVelocity;

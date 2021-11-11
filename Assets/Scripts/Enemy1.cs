@@ -6,21 +6,59 @@ public class Enemy1 : MonoBehaviour
 {
 
     Rigidbody rb;
-    public float moveSpeed, rotateSpeed;
+    public float moveSpeed, rotateSpeed, radiusTrigger, attackTrigger, attackDelay = 2;
+    public int attackDamage = 2;
     public Vector2 patrolTimes;
     int patrolDirection, patrolMovement;
-    float patrolStopWatch, patrolTime;
+    float patrolStopWatch, patrolTime, attackStopWatch;
+    PlayerStats playerStats;
+    public LayerMask playerMask;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        playerStats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Patrol();
+        bool playerInAttackRange = Physics.CheckSphere(transform.position, attackTrigger, playerMask);
+        bool playerInFollowRange = Physics.CheckSphere(transform.position, radiusTrigger, playerMask);
+        
+        //Debug.Log(playerInAttackRange + " | " + playerInFollowRange);
+        
+        if (playerInAttackRange)
+        {
+            Attack();
+            Debug.Log("attack");
+        }
+        else if (playerInFollowRange)
+        {
+            Follow();
+            Debug.Log("follow");
+        }
+        else
+        {
+            Patrol();
+        }
+    }
+
+    void Attack()
+    {        
+        attackStopWatch += Time.deltaTime;
+
+        if (attackStopWatch >= attackDelay)
+        {
+            playerStats.health -= attackDamage;
+            attackStopWatch = 0;
+        }
+    }
+
+    void Follow()
+    {
+
     }
 
     void Patrol()
@@ -52,4 +90,8 @@ public class Enemy1 : MonoBehaviour
 
         rb.AddForce(transform.forward * patrolMovement * moveSpeed * Time.deltaTime);
     }
+
+
+
+
 }
