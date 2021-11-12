@@ -10,10 +10,9 @@ public class Enemy2 : Enemy1
     float weaponStopWatch;
 
     // Start is called before the first frame update
-    void Start()
+    public override void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        playerStats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
+        base.Start();
     }
 
     // Update is called once per frame

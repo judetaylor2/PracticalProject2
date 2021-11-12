@@ -20,7 +20,7 @@ public class Enemy1 : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         rb = GetComponent<Rigidbody>();
         playerStats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
@@ -75,7 +75,7 @@ public class Enemy1 : MonoBehaviour
 
     }
 
-    public void Patrol()
+    public virtual void Patrol()
     {
         if (patrolStopWatch >= patrolTime)
         {
