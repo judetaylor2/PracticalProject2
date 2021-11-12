@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy1 : MonoBehaviour
 {
+    public int enemyType;
 
     Rigidbody rb;
     public float moveSpeed, rotateSpeed, radiusTrigger, attackTrigger, attackDelay = 2;
@@ -13,6 +14,9 @@ public class Enemy1 : MonoBehaviour
     float patrolStopWatch, patrolTime, attackStopWatch;
     PlayerStats playerStats;
     public LayerMask playerMask;
+
+    public GameObject bulletObject;
+    public Transform bulletPoint;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +33,7 @@ public class Enemy1 : MonoBehaviour
         
         //Debug.Log(playerInAttackRange + " | " + playerInFollowRange);
         
-        if (playerInAttackRange)
+        if (playerInAttackRange && enemyType == 1)
         {
             Attack();
             Debug.Log("attack");
@@ -58,7 +62,17 @@ public class Enemy1 : MonoBehaviour
 
     void Follow()
     {
+        if (enemyType == 2)
+        {
+            attackStopWatch += Time.deltaTime;
 
+            if (attackStopWatch >= attackDelay)
+            {
+                Instantiate(bulletObject, bulletPoint);
+                attackStopWatch = 0;
+            }
+
+        }
     }
 
     void Patrol()
