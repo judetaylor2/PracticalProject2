@@ -4,25 +4,35 @@ using UnityEngine;
 
 public class Enemy1 : MonoBehaviour
 {
-    public int enemyType;
-
-    Rigidbody rb;
-    public float moveSpeed, rotateSpeed, radiusTrigger, attackTrigger, attackDelay = 2;
+    //main
+    protected Rigidbody rb;
     public int attackDamage = 2;
+    public float moveSpeed, rotateSpeed, radiusTrigger, attackTrigger, attackDelay = 2;
+    
+    //patrol state
     public Vector2 patrolTimes;
-    int patrolDirection, patrolMovement;
-    float patrolStopWatch, patrolTime, attackStopWatch;
-    PlayerStats playerStats;
-    public LayerMask playerMask;
+    protected int patrolDirection, patrolMovement;
+    protected float patrolStopWatch, patrolTime, attackStopWatch;
 
-    public GameObject bulletObject;
-    public Transform bulletPoint;
+    //script references
+    public LayerMask playerMask;
+    protected PlayerStats playerStats;
+
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         playerStats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackTrigger);
+
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireSphere(transform.position, radiusTrigger);
     }
 
     // Update is called once per frame
@@ -33,7 +43,7 @@ public class Enemy1 : MonoBehaviour
         
         //Debug.Log(playerInAttackRange + " | " + playerInFollowRange);
         
-        if (playerInAttackRange && enemyType == 1)
+        if (playerInAttackRange)
         {
             Attack();
             Debug.Log("attack");
@@ -49,7 +59,7 @@ public class Enemy1 : MonoBehaviour
         }
     }
 
-    void Attack()
+    public virtual void Attack(int attackIndex = 1)
     {        
         attackStopWatch += Time.deltaTime;
 
@@ -60,22 +70,12 @@ public class Enemy1 : MonoBehaviour
         }
     }
 
-    void Follow()
+    public void Follow()
     {
-        if (enemyType == 2)
-        {
-            attackStopWatch += Time.deltaTime;
 
-            if (attackStopWatch >= attackDelay)
-            {
-                Instantiate(bulletObject, bulletPoint);
-                attackStopWatch = 0;
-            }
-
-        }
     }
 
-    void Patrol()
+    public void Patrol()
     {
         if (patrolStopWatch >= patrolTime)
         {

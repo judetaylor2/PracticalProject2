@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
-    public int bulletType;
+    public int bulletType, bulletDamage = 1;
     Transform player;
     public float bulletSpeed, timeBeforeDestroy = 5;
     float destroyStopWatch;
@@ -47,8 +47,12 @@ public class EnemyBullet : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter()
+    void OnTriggerEnter(Collider col)
     {
+        if (col.TryGetComponent<PlayerStats>(out PlayerStats p))
+        {
+            p.health -= bulletDamage;
+        }
         Destroy(gameObject);
     }
 }

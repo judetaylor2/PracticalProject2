@@ -9,14 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6617900749776566749}
-  - component: {fileID: -8007036048914765888}
+  - component: {fileID: -5201877042742757061}
   - component: {fileID: 5273282107285170252}
   - component: {fileID: 5952331106133066181}
   - component: {fileID: 1455829650681616920}
   - component: {fileID: 5799017673653200340}
   - component: {fileID: -3706503615026898164}
   m_Layer: 0
-  m_Name: Enemy1
+  m_Name: Enemy2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,7 +36,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-8007036048914765888
+--- !u!114 &-5201877042742757061
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,22 +45,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 4303464852176806568}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8f36310ad0409806bebb5eabf5c66f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 949f199e7df84cf418cfb3a219d0cd66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyType: 0
-  moveSpeed: 800
+  attackDamage: 5
+  moveSpeed: 500
   rotateSpeed: 25
   radiusTrigger: 30
   attackTrigger: 4
   attackDelay: 2
-  attackDamage: 7
-  patrolTimes: {x: 3, y: 7}
+  patrolTimes: {x: 0, y: 0}
   playerMask:
     serializedVersion: 2
-    m_Bits: 1024
-  bulletObject: {fileID: 0}
-  bulletPoint: {fileID: 0}
+    m_Bits: 0
+  EnemyProjectile: {fileID: 4599766922620992735, guid: 8cfdad4a4c5bd274d9f6213707b4a15e, type: 3}
 --- !u!33 &5273282107285170252
 MeshFilter:
   m_ObjectHideFlags: 0
