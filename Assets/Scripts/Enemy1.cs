@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy1 : MonoBehaviour
 {
     //main
+    protected NavMeshAgent agent;
     protected Rigidbody rb;
     public int attackDamage = 2;
     public float moveSpeed, rotateSpeed, radiusTrigger, attackTrigger, attackDelay = 2;
@@ -24,6 +26,7 @@ public class Enemy1 : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         playerStats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
+        agent = GetComponent<NavMeshAgent>();
     }
 
     void OnDrawGizmos()
@@ -70,9 +73,9 @@ public class Enemy1 : MonoBehaviour
         }
     }
 
-    public void Follow()
+    public virtual void Follow()
     {
-
+        agent.SetDestination(playerStats.transform.position);
     }
 
     public virtual void Patrol()

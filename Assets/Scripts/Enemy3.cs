@@ -26,4 +26,10 @@ public class Enemy3 : Enemy2
             Patrol();
         }
     }
+
+    public override void Follow()
+    {
+        rb.AddForce(transform.forward * moveSpeed);
+        transform.LookAt(playerStats.transform);
+    }
 }
