@@ -211,13 +211,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 15733366}
-  m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: -7.35, y: -1.81, z: -6.33}
+  m_LocalRotation: {x: 0.24051668, y: -0, z: -0, w: 0.970645}
+  m_LocalPosition: {x: -7.35, y: -1.81, z: -27}
   m_LocalScale: {x: 36.248547, y: 6.424692, z: 36.248547}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 27.834, y: 0, z: 0}
 --- !u!1 &98114455
 GameObject:
   m_ObjectHideFlags: 0
@@ -1211,6 +1211,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy1
       objectReference: {fileID: 0}
+    - target: {fileID: 4303464852176806568, guid: ebf7420c5f018c930b7bf21736711d10, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6617900749776566749, guid: ebf7420c5f018c930b7bf21736711d10, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1356,7 +1360,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 7.5
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 112
@@ -1427,6 +1431,7 @@ MonoBehaviour:
   jumpHeight: 1000
   duckHeight: 0.3
   initialGravity: 50
+  constantGravity: -9.81
   isGrounded: 1
   groundCheck: {fileID: 325378266}
   groundDistance: 0.4
@@ -2593,6 +2598,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy2
       objectReference: {fileID: 0}
+    - target: {fileID: 4303464852176806568, guid: c60634704f4625148a20e46192f77ab4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6617900749776566749, guid: c60634704f4625148a20e46192f77ab4, type: 3}
       propertyPath: m_RootOrder
       value: 19
@@ -2760,6 +2769,10 @@ PrefabInstance:
     - target: {fileID: 4303464852176806568, guid: 5866bf87a0c9b8b459cebe8fab0529b0, type: 3}
       propertyPath: m_Name
       value: Enemy3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4303464852176806568, guid: 5866bf87a0c9b8b459cebe8fab0529b0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5799017673653200340, guid: 5866bf87a0c9b8b459cebe8fab0529b0, type: 3}
       propertyPath: m_IsKinematic
