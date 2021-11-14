@@ -6,17 +6,19 @@ public class PlayerController : MonoBehaviour
 {
     //Player
     Rigidbody rb;
-    public float regularMoveSpeed, duckMoveSpeed, jumpHeight, duckHeight, initialGravity;
+    public float regularMoveSpeed, duckMoveSpeed, jumpHeight, duckHeight, initialGravity, constantGravity = -9.81f;
     float moveSpeed, regularHeight, lastActiveInputX, lastActiveInputZ;
     Vector3 lastGroundedDirectionRight, lastGroundedDirectionForward;
     
-    float gravity, gravityStopWatch;
+    float fallGravity, gravityStopWatch;
     
     //Ground Check
     [HideInInspector] public bool isGrounded = true;
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
+
+    RaycastHit slopeHit;
 
 
     // Start is called before the first frame update
@@ -27,12 +29,19 @@ public class PlayerController : MonoBehaviour
         regularHeight = transform.localScale.y;
         moveSpeed = regularMoveSpeed;
 
-        gravity = initialGravity;
+        fallGravity = initialGravity;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        //add constant gravity to the player
+        if (isGrounded)
+        rb.AddForce(slopeHit.normal * constantGravity);
+        else
+        rb.AddForce(Vector3.up * constantGravity);
+
+        
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
         float x = Input.GetAxisRaw("Horizontal");
@@ -53,9 +62,13 @@ public class PlayerController : MonoBehaviour
 
         if (isGrounded)
         {
+            Physics.Raycast(transform.position, Vector3.down, out slopeHit, groundDistance * 5, groundMask);
+            
             //player move
             Vector3 move = transform.right * x + transform.forward * z;
-            rb.AddForce(move.normalized * moveSpeed);
+            Vector3 slopeMoveDirection = Vector3.ProjectOnPlane(move.normalized, slopeHit.normal * 5);
+            Debug.Log("Slopehit normal: " + slopeHit.normal);
+            rb.AddForce(slopeMoveDirection * moveSpeed);
 
 
             lastActiveInputX = Input.GetAxis("Horizontal");
@@ -64,7 +77,7 @@ public class PlayerController : MonoBehaviour
             lastGroundedDirectionForward = transform.forward;
 
             gravityStopWatch = 0;
-            gravity = initialGravity;
+            fallGravity = initialGravity;
 
             //only change movespeed when grounded to avoid decrease in midair momentum
             if (Input.GetButton("Duck"))
@@ -77,14 +90,14 @@ public class PlayerController : MonoBehaviour
 
             if (rb.velocity.y <= 0 && !isGrounded)
             {
-                rb.AddForce(-Vector3.up * gravity, ForceMode.Acceleration);
+                rb.AddForce(-Vector3.up * fallGravity, ForceMode.Acceleration);
             }
             
             //gravity acceleration
             gravityStopWatch += Time.deltaTime;
             if (gravityStopWatch >= 0.1f && rb.velocity.y <= 0)
             {
-                gravity += initialGravity / 10;
+                fallGravity += initialGravity / 10;
             }
             
             //forward jump acceleration
@@ -104,5 +117,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(/*-Physics.gravity.y * */Vector3.up * jumpHeight, ForceMode.Acceleration);
         }
+        
+        
     }
 }
