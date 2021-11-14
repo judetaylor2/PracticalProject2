@@ -13,12 +13,16 @@ public class Enemy3 : Enemy2
     // Update is called once per frame
     void Update()
     {
+        bool playerInAttackRange = Physics.CheckSphere(transform.position, attackTrigger, playerMask);
         bool playerInFollowRange = Physics.CheckSphere(transform.position, radiusTrigger, playerMask);
         
         if (playerInFollowRange)
         {
-            Follow();
             Attack(2);
+            transform.LookAt(playerStats.transform);
+            
+            if (!playerInAttackRange)
+            Follow();
             Debug.Log("follow");
         }
         else
@@ -30,6 +34,5 @@ public class Enemy3 : Enemy2
     public override void Follow()
     {
         rb.AddForce(transform.forward * moveSpeed);
-        transform.LookAt(playerStats.transform);
     }
 }
