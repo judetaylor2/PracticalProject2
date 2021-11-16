@@ -53,8 +53,9 @@ MonoBehaviour:
   moveSpeed: 1500
   rotateSpeed: 25
   radiusTrigger: 30
-  attackTrigger: 15
-  attackDelay: 2
+  attackTrigger: 5
+  shootTrigger: 0
+  attackDelay: 0.7
   patrolTimes: {x: 3, y: 7}
   playerMask:
     serializedVersion: 2
@@ -130,7 +131,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4303464852176806568}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 7
   m_Drag: 5
   m_AngularDrag: 0.05
   m_UseGravity: 1

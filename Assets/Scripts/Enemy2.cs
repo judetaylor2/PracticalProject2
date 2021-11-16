@@ -20,23 +20,42 @@ public class Enemy2 : Enemy1
     {
         bool playerInAttackRange = Physics.CheckSphere(transform.position, attackTrigger, playerMask);
         bool playerInFollowRange = Physics.CheckSphere(transform.position, radiusTrigger, playerMask);
+        bool playerInShootRange = Physics.CheckSphere(transform.position, shootTrigger, playerMask);
         
         //Debug.Log(playerInAttackRange + " | " + playerInFollowRange);
         
         if (playerInAttackRange)
         {
+            anim.SetBool("isAttacking", true);
             Attack(1);
             Debug.Log("attack");
+            transform.LookAt(playerStats.transform.position);
+        }
+        else if (playerInShootRange)
+        {
+            anim.SetBool("isShooting", true);
+            anim.SetBool("isFollowing", false);
+            anim.SetBool("isAttacking", false);
+            Attack(2);
+            agent.SetDestination(transform.position);
+            transform.LookAt(playerStats.transform.position);
         }
         else if (playerInFollowRange)
         {
+            anim.SetBool("isFollowing", true);
+            anim.SetBool("isAttacking", false);
+            anim.SetBool("isShooting", false);
             Follow();
             Attack(2);
             Debug.Log("follow");
         }
         else
         {
+            anim.SetBool("isAttacking", false);
+            anim.SetBool("isFollowing", false);
+            anim.SetBool("isShooting", false);
             Patrol();
+            agent.SetDestination(transform.position);
         }
     }
 

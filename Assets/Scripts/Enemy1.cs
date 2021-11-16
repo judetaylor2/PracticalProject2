@@ -9,7 +9,8 @@ public class Enemy1 : MonoBehaviour
     protected NavMeshAgent agent;
     protected Rigidbody rb;
     public int attackDamage = 2;
-    public float moveSpeed, rotateSpeed, radiusTrigger, attackTrigger, attackDelay = 2;
+    public float moveSpeed, rotateSpeed, radiusTrigger, attackTrigger, shootTrigger,attackDelay = 2;
+    protected Animator anim;
     
     //patrol state
     public Vector2 patrolTimes;
@@ -27,6 +28,7 @@ public class Enemy1 : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         playerStats = GameObject.FindWithTag("Player").GetComponent<PlayerStats>();
         agent = GetComponent<NavMeshAgent>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     void OnDrawGizmos()
@@ -34,8 +36,11 @@ public class Enemy1 : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackTrigger);
 
-        Gizmos.color = Color.white;
+        Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, radiusTrigger);
+
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireSphere(transform.position, shootTrigger);
     }
 
     // Update is called once per frame
@@ -48,17 +53,24 @@ public class Enemy1 : MonoBehaviour
         
         if (playerInAttackRange)
         {
+            anim.SetBool("isAttacking", true);
             Attack();
             Debug.Log("attack");
+            transform.LookAt(playerStats.transform.position);
         }
         else if (playerInFollowRange)
         {
+            anim.SetBool("isFollowing", true);
+            anim.SetBool("isAttacking", false);
             Follow();
             Debug.Log("follow");
         }
         else
         {
+            anim.SetBool("isAttacking", false);
+            anim.SetBool("isFollowing", false);
             Patrol();
+            agent.SetDestination(transform.position);
         }
     }
 
