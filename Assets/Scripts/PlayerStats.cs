@@ -16,6 +16,9 @@ public class PlayerStats : MonoBehaviour
     public Slider healthBar;
     public Image healthImage, damageImage;
     public Gradient healthColors;
+    public GameObject camNode;
+
+    float damageAmount;
 
     // Start is called before the first frame update
     void Start()
@@ -27,13 +30,14 @@ public class PlayerStats : MonoBehaviour
         previousVelocity = rb.velocity.y;
 
         damageImage.color = new Color (0, 0, 0, 0);
+
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
 
-        if (previousVelocity >= fallDamageDistance && player.isGrounded && health > 0)
+        if (previousVelocity >= fallDamageDistance && player.isGrounded)
         {
             int damage = (int)(previousVelocity * fallDamageMultiplier);
             TakeDamage(damage);
@@ -58,41 +62,61 @@ public class PlayerStats : MonoBehaviour
 
     void Update()
     {
+
+
         healthText.text = health.ToString();
         
         healthBar.value = health;
 
         healthImage.color = healthText.color = healthBar.fillRect.GetComponent<Image>().color = healthColors.Evaluate(healthBar.value / 100);
 
+        Debug.Log(damageAmount);
+        
         //damageImage.color = Color.Lerp(Color.red, Color.blue, 0.5f);
     }
 
-    void TakeDamage(int damage)
+    public void TakeDamage(int damage)
     {
+        damageAmount += damage;
+
         health -= damage;
         Debug.Log($"Damage: {(int)(previousVelocity * fallDamageMultiplier)} | health {health}");
         
-        if (damage > 30)
-        StartCoroutine("DamageUI");
+        /*if (damageAmount >= 5)
+        {*/
+            StopCoroutine("DamageUI");
+            //damageImage.color = new Color(1, 0, 0, 0);
+            camNode.transform.localRotation = Quaternion.Euler(camNode.transform.localRotation.x, camNode.transform.localRotation.y, 0);
+            StartCoroutine("DamageUI");
+        //}
     }
     
     IEnumerator DamageUI()
     {
-        for (float i = 0; i < 1; i+= 0.15f)
+        Quaternion q = Quaternion.Euler(camNode.transform.localRotation.x, camNode.transform.localRotation.y, Mathf.Clamp((damageAmount / 3) * (Random.Range(0f, 1f) >= 0.5f? 1:-1), -15, 15));
+
+        float damageOpacity = damageAmount / 50;
+        
+        for (float i = 0; i < 1; i+= 0.02f)
         {
-            damageImage.color = Color.Lerp(damageImage.color, new Color(1, 0, 0, 0.5f), i);
+            damageImage.color = Color.Lerp(damageImage.color, new Color(1, 0, 0, Mathf.Clamp(damageOpacity, 0, 0.5f)), i);
+            camNode.transform.localRotation = Quaternion.Lerp(camNode.transform.localRotation, q, i);
             yield return new WaitForSeconds(damageUITime);
 
         }
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.5f);
 
+        damageAmount = 0;
+        
         for (float i = 0; i < 1; i+= 0.01f)
         {
             damageImage.color = Color.Lerp(damageImage.color, new Color(0, 0, 0, 0), i);
+            camNode.transform.localRotation = Quaternion.Lerp(camNode.transform.localRotation, Quaternion.Euler(camNode.transform.localRotation.x, camNode.transform.localRotation.y, 0), i);
             yield return new WaitForSeconds(damageUITime * 5000000);
 
         }
+
 
     }
 

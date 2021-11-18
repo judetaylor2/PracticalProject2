@@ -29,7 +29,7 @@ public class Enemy2 : Enemy1
             anim.SetBool("isAttacking", true);
             Attack(1);
             Debug.Log("attack");
-            transform.LookAt(playerStats.transform.position);
+            transform.LookAt(new Vector3(playerStats.transform.position.x, transform.position.y , playerStats.transform.position.z));
         }
         else if (playerInShootRange)
         {
@@ -38,7 +38,7 @@ public class Enemy2 : Enemy1
             anim.SetBool("isAttacking", false);
             Attack(2);
             agent.SetDestination(transform.position);
-            transform.LookAt(playerStats.transform.position);
+            transform.LookAt(new Vector3(playerStats.transform.position.x, transform.position.y , playerStats.transform.position.z));
         }
         else if (playerInFollowRange)
         {

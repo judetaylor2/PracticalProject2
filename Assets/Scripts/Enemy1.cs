@@ -56,7 +56,8 @@ public class Enemy1 : MonoBehaviour
             anim.SetBool("isAttacking", true);
             Attack();
             Debug.Log("attack");
-            transform.LookAt(playerStats.transform.position);
+            
+            transform.LookAt(new Vector3(playerStats.transform.position.x, transform.position.y , playerStats.transform.position.z));
         }
         else if (playerInFollowRange)
         {
@@ -80,7 +81,7 @@ public class Enemy1 : MonoBehaviour
 
         if (attackStopWatch >= attackDelay)
         {
-            playerStats.health -= attackDamage;
+            playerStats.TakeDamage(attackDamage);
             attackStopWatch = 0;
         }
     }

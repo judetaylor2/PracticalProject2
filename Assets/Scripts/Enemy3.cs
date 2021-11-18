@@ -22,8 +22,11 @@ public class Enemy3 : Enemy2
             transform.LookAt(playerStats.transform);
             
             if (!playerInAttackRange)
-            Follow();
-            Debug.Log("follow");
+            {
+                Follow();
+                Debug.Log("follow");
+
+            }
         }
         else
         {
