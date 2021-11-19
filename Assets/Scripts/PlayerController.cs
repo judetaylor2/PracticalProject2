@@ -11,6 +11,10 @@ public class PlayerController : MonoBehaviour
     Vector3 lastGroundedDirectionRight, lastGroundedDirectionForward;
     CapsuleCollider capsuleCollider;
     
+    public Transform cameraTransform;
+    float regularCameraPositionY;
+    public float duckCameraPositionY;
+    
     float fallGravity, gravityStopWatch;
     
     //Ground Check
@@ -30,6 +34,8 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         capsuleCollider = GetComponent<CapsuleCollider>();
+
+        regularCameraPositionY = cameraTransform.position.y;
         
         regularHeight = capsuleCollider.height;
         moveSpeed = regularMoveSpeed;
@@ -58,16 +64,23 @@ public class PlayerController : MonoBehaviour
         float z = Input.GetAxisRaw("Vertical");
 
         
-        if(Input.GetButtonDown("Duck"))
+        if(Input.GetButton("Duck"))
         {
             capsuleCollider.height = duckHeight;
-            
+            //cameraTransform.position = Vector3.Lerp(cameraTransform.position, new Vector3(cameraTransform.position.x, duckCameraPositionY, cameraTransform.position.z), 0.5f);
+
+            //cameraTransform.position = new Vector3(cameraTransform.position.x, duckCameraPositionY, cameraTransform.position.z);
         }
         else if(!Input.GetButton("Duck") && isGrounded)
         {
             capsuleCollider.height = regularHeight;
             moveSpeed = regularMoveSpeed;
+
+            //cameraTransform.position = Vector3.Lerp(cameraTransform.position, new Vector3(cameraTransform.position.x, regularCameraPositionY, cameraTransform.position.z), 0.5f);
+
+            //cameraTransform.position = new Vector3(cameraTransform.position.x, duckCameraPositionY, cameraTransform.position.z);
         }
+
 
 
         if (isGrounded)
