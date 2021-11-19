@@ -163,6 +163,19 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &8370138548255614474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5118953290437351401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 043123179d6c9e4f2af9aa8c8a9bf1fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSourcesObject: {fileID: 1827967381090943201, guid: 49b139304cd2ac270884bdd7f3619bb0, type: 3}
 --- !u!1001 &5118953290437251307
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -240,6 +253,11 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: b31aa69a964e11261997ad801bdfaf9e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24f8d6aa660f9444ab0544d85c672e4a, type: 3}
+--- !u!1 &5118953290437351401 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100098, guid: 24f8d6aa660f9444ab0544d85c672e4a, type: 3}
+  m_PrefabInstance: {fileID: 5118953290437251307}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5118953290437118475 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400096, guid: 24f8d6aa660f9444ab0544d85c672e4a, type: 3}

@@ -18,7 +18,11 @@ public class PlayerStats : MonoBehaviour
     public Gradient healthColors;
     public GameObject camNode;
 
-    float damageAmount;
+    float damageAmount, damageStopWatch;
+
+    //sound
+    [Header("Sounds")] public AudioSource meleeDamageSound; 
+    public AudioSource bulletDamageSound;
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +44,7 @@ public class PlayerStats : MonoBehaviour
         if (previousVelocity >= fallDamageDistance && player.isGrounded)
         {
             int damage = (int)(previousVelocity * fallDamageMultiplier);
-            TakeDamage(damage);
+            TakeDamage(damage, 0);
             
             StartCoroutine("DamageUI");
             
@@ -62,7 +66,12 @@ public class PlayerStats : MonoBehaviour
 
     void Update()
     {
-
+        damageStopWatch += Time.deltaTime;
+        if (damageStopWatch >= 1.5f)
+        {
+            damageAmount = 0;
+            damageStopWatch = 0;
+        }
 
         healthText.text = health.ToString();
         
@@ -75,20 +84,30 @@ public class PlayerStats : MonoBehaviour
         //damageImage.color = Color.Lerp(Color.red, Color.blue, 0.5f);
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, int damageSoundIndex)
     {
+        damageStopWatch = 0;
         damageAmount += damage;
 
         health -= damage;
         Debug.Log($"Damage: {(int)(previousVelocity * fallDamageMultiplier)} | health {health}");
         
-        /*if (damageAmount >= 5)
-        {*/
+        if (damageAmount >= 5)
+        {
             StopCoroutine("DamageUI");
             //damageImage.color = new Color(1, 0, 0, 0);
             camNode.transform.localRotation = Quaternion.Euler(camNode.transform.localRotation.x, camNode.transform.localRotation.y, 0);
             StartCoroutine("DamageUI");
-        //}
+            
+            if (damageSoundIndex == 0)
+            {
+                meleeDamageSound.Play();
+            }
+            else
+            {
+                bulletDamageSound.Play();    
+            }
+        }
     }
     
     IEnumerator DamageUI()
@@ -107,7 +126,7 @@ public class PlayerStats : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        damageAmount = 0;
+        //damageAmount = 0;
         
         for (float i = 0; i < 1; i+= 0.01f)
         {

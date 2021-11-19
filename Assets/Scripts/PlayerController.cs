@@ -20,6 +20,9 @@ public class PlayerController : MonoBehaviour
 
     RaycastHit slopeHit;
 
+    //audio
+    public AudioSource moveSoundSoft;
+
 
     // Start is called before the first frame update
     void Start()
@@ -70,6 +73,10 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Slopehit normal: " + slopeHit.normal);
             rb.AddForce(slopeMoveDirection * moveSpeed);
 
+            if (!moveSoundSoft.isPlaying && (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0))
+            moveSoundSoft.Play();
+            else if (moveSoundSoft.time >= 4.5f)
+            moveSoundSoft.Stop();
 
             lastActiveInputX = Input.GetAxis("Horizontal");
             lastActiveInputZ = Input.GetAxis("Vertical");
@@ -116,6 +123,12 @@ public class PlayerController : MonoBehaviour
         if(Input.GetButtonDown("Jump") && isGrounded)
         {
             rb.AddForce(/*-Physics.gravity.y * */Vector3.up * jumpHeight, ForceMode.Acceleration);
+        }
+
+        //sound
+        if (!moveSoundSoft.isPlaying)
+        {
+            moveSoundSoft.time = 4.1f;
         }
         
         
