@@ -9,11 +9,12 @@ public class PlayerController : MonoBehaviour
     public float regularMoveSpeed, duckMoveSpeed, jumpHeight, duckHeight, initialGravity, constantGravity = -9.81f;
     float moveSpeed, regularHeight, lastActiveInputX, lastActiveInputZ;
     Vector3 lastGroundedDirectionRight, lastGroundedDirectionForward;
+    CapsuleCollider capsuleCollider;
     
     float fallGravity, gravityStopWatch;
     
     //Ground Check
-    [HideInInspector] public bool isGrounded = true;
+    public bool isGrounded = true;
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
@@ -28,11 +29,17 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-
-        regularHeight = transform.localScale.y;
+        capsuleCollider = GetComponent<CapsuleCollider>();
+        
+        regularHeight = capsuleCollider.height;
         moveSpeed = regularMoveSpeed;
 
         fallGravity = initialGravity;
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(groundCheck.position, groundDistance);
     }
 
     // Update is called once per frame
@@ -53,12 +60,12 @@ public class PlayerController : MonoBehaviour
         
         if(Input.GetButtonDown("Duck"))
         {
-            transform.localScale = new Vector3(1f, duckHeight, 1f);
+            capsuleCollider.height = duckHeight;
             
         }
         else if(!Input.GetButton("Duck") && isGrounded)
         {
-            transform.localScale = new Vector3(1f, regularHeight, 1f);
+            capsuleCollider.height = regularHeight;
             moveSpeed = regularMoveSpeed;
         }
 
