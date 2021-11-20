@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     
     //Ground Check
     public bool isGrounded = true;
-    public Transform groundCheck;
+    public Transform groundCheck, roofCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
 
@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         capsuleCollider = GetComponent<CapsuleCollider>();
 
-        regularCameraPositionY = cameraTransform.position.y;
+        regularCameraPositionY = cameraTransform.localPosition.y;
         
         regularHeight = capsuleCollider.height;
         moveSpeed = regularMoveSpeed;
@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.DrawWireSphere(groundCheck.position, groundDistance);
+        Gizmos.DrawWireSphere(roofCheck.position, groundDistance);
     }
 
     // Update is called once per frame
@@ -67,18 +68,18 @@ public class PlayerController : MonoBehaviour
         if(Input.GetButton("Duck"))
         {
             capsuleCollider.height = duckHeight;
-            //cameraTransform.position = Vector3.Lerp(cameraTransform.position, new Vector3(cameraTransform.position.x, duckCameraPositionY, cameraTransform.position.z), 0.5f);
-
+            cameraTransform.localPosition = Vector3.Lerp(cameraTransform.localPosition, new Vector3(cameraTransform.localPosition.x, duckCameraPositionY, cameraTransform.localPosition.z), 0.5f);
+            rb.AddForce(-transform.up * 6);
             //cameraTransform.position = new Vector3(cameraTransform.position.x, duckCameraPositionY, cameraTransform.position.z);
         }
-        else if(!Input.GetButton("Duck") && isGrounded)
+        else if(!Input.GetButton("Duck") && isGrounded  && !Physics.CheckSphere(roofCheck.position, groundDistance, groundMask))
         {
             capsuleCollider.height = regularHeight;
             moveSpeed = regularMoveSpeed;
 
-            //cameraTransform.position = Vector3.Lerp(cameraTransform.position, new Vector3(cameraTransform.position.x, regularCameraPositionY, cameraTransform.position.z), 0.5f);
+            cameraTransform.localPosition = Vector3.Lerp(cameraTransform.localPosition, new Vector3(cameraTransform.localPosition.x, regularCameraPositionY, cameraTransform.localPosition.z), 0.5f);
 
-            //cameraTransform.position = new Vector3(cameraTransform.position.x, duckCameraPositionY, cameraTransform.position.z);
+            //cameraTransform.position = new Vector3(cameraTransform.position.x, regularCameraPositionY, cameraTransform.position.z);
         }
 
 

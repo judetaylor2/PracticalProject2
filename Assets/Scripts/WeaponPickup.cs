@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WeaponPickup : MonoBehaviour
 {
+    public AudioSource pickupSound;
+    
     WeaponController weaponController;
     public int weaponIndex;
     
@@ -15,6 +17,21 @@ public class WeaponPickup : MonoBehaviour
     void OnTriggerEnter()
     {
         weaponController.GiveWeapon(weaponIndex);
-        Destroy(gameObject);
+
+        pickupSound.time = 1.0f;
+        pickupSound.Play();
+        
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
+    }
+
+    void Update()
+    {
+        if (pickupSound.time >= 1.5f)
+        {
+            pickupSound.Stop();
+            Destroy(gameObject);
+
+        }
+
     }
 }

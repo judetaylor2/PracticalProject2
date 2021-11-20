@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44659358, g: 0.49642974, b: 0.57482505, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -603,7 +603,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 325378265}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.85, z: 0}
+  m_LocalPosition: {x: 0, y: -0.9, z: 0}
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.5}
   m_Children: []
   m_Father: {fileID: 897566599}
@@ -1268,6 +1268,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -122073751425180324, guid: 05bf9e4a172c9e44a851c651dfc8395c, type: 3}
+      propertyPath: pickupSound
+      value: 
+      objectReference: {fileID: 1167141303}
     - target: {fileID: 859591750623426458, guid: 05bf9e4a172c9e44a851c651dfc8395c, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1936,9 +1940,10 @@ MonoBehaviour:
   initialGravity: 50
   constantGravity: -9.81
   cameraTransform: {fileID: 1351072350}
-  duckCameraPositionY: 1
+  duckCameraPositionY: 0.2
   isGrounded: 1
   groundCheck: {fileID: 325378266}
+  roofCheck: {fileID: 1254901293}
   groundDistance: 0.45
   groundMask:
     serializedVersion: 2
@@ -1956,6 +1961,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1.25, z: 1}
   m_Children:
   - {fileID: 325378266}
+  - {fileID: 1254901293}
   - {fileID: 1163097407}
   - {fileID: 1017779686}
   m_Father: {fileID: 0}
@@ -2337,7 +2343,7 @@ Transform:
   m_LocalScale: {x: 0.75, y: 0.75, z: 0.5}
   m_Children: []
   m_Father: {fileID: 897566599}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1024871731
 GameObject:
@@ -2523,7 +2529,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1056931265}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.65, y: 4.18, z: 15.26}
+  m_LocalPosition: {x: 8.65, y: 4.06, z: 15.26}
   m_LocalScale: {x: 6.8581, y: 6.8581, z: 6.8581}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2750,8 +2756,13 @@ Transform:
   - {fileID: 1351072350}
   - {fileID: 1501128495}
   m_Father: {fileID: 897566599}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1167141303 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 9071814098786294504, guid: 49b139304cd2ac270884bdd7f3619bb0, type: 3}
+  m_PrefabInstance: {fileID: 7703160543649795825}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1245944010
 GameObject:
   m_ObjectHideFlags: 0
@@ -2846,6 +2857,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1254901292
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1254901293}
+  m_Layer: 0
+  m_Name: Roof Check Sphere
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1254901293
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254901292}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.652, z: 0}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 0.5}
+  m_Children: []
+  m_Father: {fileID: 897566599}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1261588975
 GameObject:
@@ -3030,7 +3071,7 @@ GameObject:
   - component: {fileID: 1351072349}
   - component: {fileID: 1351072348}
   - component: {fileID: 1351072352}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
