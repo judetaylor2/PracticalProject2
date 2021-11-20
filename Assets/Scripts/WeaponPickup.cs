@@ -14,19 +14,23 @@ public class WeaponPickup : MonoBehaviour
         weaponController = GameObject.FindWithTag("Player").GetComponent<WeaponController>();    
     }
 
-    void OnTriggerEnter()
+    void OnTriggerEnter(Collider other)
     {
-        weaponController.GiveWeapon(weaponIndex);
+        if (other.gameObject.tag == "Player")
+        {
+            weaponController.GiveWeapon(weaponIndex);
 
-        pickupSound.time = 1.0f;
-        pickupSound.Play();
-        
-        gameObject.GetComponent<MeshRenderer>().enabled = false;
+            pickupSound.time = 1.0f;
+            pickupSound.Play();
+            
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
+            
+        }
     }
 
     void Update()
     {
-        if (pickupSound.time >= 1.5f)
+        if (pickupSound.time >= 1.5f && !gameObject.GetComponent<MeshRenderer>().enabled)
         {
             pickupSound.Stop();
             Destroy(gameObject);
