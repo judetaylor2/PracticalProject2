@@ -82,7 +82,9 @@ public class PlayerController : MonoBehaviour
             //cameraTransform.position = new Vector3(cameraTransform.position.x, regularCameraPositionY, cameraTransform.position.z);
         }
 
-
+        //sound
+        if (moveSoundSoft.time >= 4.5f)
+        moveSoundSoft.Stop();
 
         if (isGrounded)
         {
@@ -96,8 +98,6 @@ public class PlayerController : MonoBehaviour
 
             if (!moveSoundSoft.isPlaying && (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0))
             moveSoundSoft.Play();
-            else if (moveSoundSoft.time >= 4.5f)
-            moveSoundSoft.Stop();
 
             lastActiveInputX = Input.GetAxis("Horizontal");
             lastActiveInputZ = Input.GetAxis("Vertical");

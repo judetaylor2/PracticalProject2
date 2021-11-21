@@ -6,19 +6,19 @@ public class WeaponPickup : MonoBehaviour
 {
     public AudioSource pickupSound;
     
-    WeaponController weaponController;
+    WeaponSelector weaponSelector;
     public int weaponIndex;
     
     void Start()
     {
-        weaponController = GameObject.FindWithTag("Player").GetComponent<WeaponController>();    
+        weaponSelector = GameObject.FindWithTag("Player").GetComponent<WeaponSelector>();    
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-            weaponController.GiveWeapon(weaponIndex);
+            weaponSelector.GiveWeapon(weaponIndex);
 
             pickupSound.time = 1.0f;
             pickupSound.Play();

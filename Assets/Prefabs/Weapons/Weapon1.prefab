@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1917533557788164723}
+  - component: {fileID: 378782406832587993}
   - component: {fileID: 8159065525958759741}
   - component: {fileID: 8942406745363989284}
   - component: {fileID: 8210562498193470889}
@@ -33,6 +34,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -6.754, y: -120.384, z: -175.106}
+--- !u!114 &378782406832587993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8646720262107916155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b5909125424a25b3a4757dc6fae3362, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponDamage: 5
+  attackDelay: 0.5
+  equipTime: 1
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 4096
 --- !u!33 &8159065525958759741
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -90,8 +109,8 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8646720262107916155}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 35, y: 35, z: 35}
+  m_Center: {x: 0, y: 0, z: 18}

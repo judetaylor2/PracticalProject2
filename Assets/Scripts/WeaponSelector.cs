@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponController : MonoBehaviour
+public class WeaponSelector : MonoBehaviour
 {
     public Transform weaponTransform;
     public List<GameObject> weapons, playerWeapons;
