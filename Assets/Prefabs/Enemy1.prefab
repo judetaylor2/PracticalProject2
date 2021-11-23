@@ -64,6 +64,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  enemyMesh: {fileID: 430486309052410989}
   hitSound: {fileID: 0}
 --- !u!114 &-8007036048914765888
 MonoBehaviour:

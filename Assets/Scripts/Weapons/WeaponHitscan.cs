@@ -11,6 +11,11 @@ public class WeaponHitscan : WeaponController
         Gizmos.DrawLine(shootPoint.position, hit.point);
     }
 
+    public override void Update()
+    {
+        base.Update();
+    }
+
     public override void Shoot(float distance, Vector3 direction)
     {
         if (Physics.Raycast(shootPoint.position, direction, out hit, distance, enemyMask))

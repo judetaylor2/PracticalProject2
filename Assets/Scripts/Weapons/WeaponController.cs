@@ -8,6 +8,8 @@ public class WeaponController : MonoBehaviour
     public float attackDelay, equipTime, reloadTime;
     public Transform shootPoint;
     public LayerMask enemyMask;
+
+    float attackStopWatch;
     
     // Start is called before the first frame update
     void Start()
@@ -16,9 +18,15 @@ public class WeaponController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
-        
+        attackStopWatch += Time.deltaTime;
+
+        if (Input.GetAxis("Fire1") != 0 && attackStopWatch >= attackDelay)
+        {
+            Shoot(100, transform.forward);
+            attackStopWatch = 0;
+        }
     }
 
     public virtual void Shoot(float distance, Vector3 direction)

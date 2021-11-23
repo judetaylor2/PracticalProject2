@@ -16,13 +16,10 @@ public class EnemyStats : MonoBehaviour
     
     void Update()
     {
-        if (currentHealth <= 0 && !hitSound.isPlaying)
+        if (currentHealth <= 0)
         {
+            hitSound.Stop();
             Destroy(gameObject);
-        }
-        else if (currentHealth <= 0 && hitSound.isPlaying)
-        {
-            GetComponent<MeshRenderer>().enabled = false;
         }    
 
         if (hitSound.time >= 3f)
