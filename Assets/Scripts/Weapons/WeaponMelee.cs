@@ -12,10 +12,14 @@ public class WeaponMelee : MonoBehaviour
     
     public LayerMask enemyMask;
 
+    Animator anim;
+    AudioSource attackSound;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        anim = GetComponent<Animator>();
+        attackSound = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -23,9 +27,9 @@ public class WeaponMelee : MonoBehaviour
     {
         attackStopWatch += Time.deltaTime;
         
-        if (Input.GetAxis("Fire1") > 0 && attackStopWatch >= attackDelay && !isAttacking)
+        if (Input.GetAxis("Fire1") > 0 && attackStopWatch >= attackDelay && !isAttacking && !anim.GetBool("isAttacking"))
         {
-            Attack();
+            anim.SetBool("isAttacking", true);
             attackStopWatch = 0;
         }
         else if (attackStopWatch >= attackDelay && isAttacking)
@@ -34,9 +38,10 @@ public class WeaponMelee : MonoBehaviour
         }
     }
 
-    void Attack()
+    public void Attack()
     {
         isAttacking = true;
+        attackSound.Play();
     }
 
     void OnTriggerStay(Collider other)
@@ -46,5 +51,10 @@ public class WeaponMelee : MonoBehaviour
             other.GetComponent<EnemyStats>().TakeDamage(weaponDamage);
             isAttacking = false;
         }
+    }
+
+    public void StopAttack()
+    {
+        anim.SetBool("isAttacking", false);
     }
 }
