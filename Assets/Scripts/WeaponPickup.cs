@@ -8,6 +8,7 @@ public class WeaponPickup : MonoBehaviour
     
     WeaponSelector weaponSelector;
     public int weaponIndex;
+    public GameObject weapon;
     
     void Start()
     {
@@ -18,7 +19,7 @@ public class WeaponPickup : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            weaponSelector.GiveWeapon(weaponIndex);
+            weaponSelector.GiveWeapon(weapon);
 
             pickupSound.time = 1.0f;
             pickupSound.Play();

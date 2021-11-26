@@ -38,11 +38,31 @@ public class WeaponSelector : MonoBehaviour
 
             Debug.Log("current weapon: " + currentWeapon);
         }
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0)
+        {
+            currentWeapon.SetActive(false);
+            GameObject g = currentWeapon;
+
+            for (int i = playerWeapons.Count - 1; i >= 0; i--)
+            {
+                if (currentWeapon != playerWeapons[i])
+                {
+                    currentWeapon = playerWeapons[i];
+                    break;
+                }
+            }
+
+    
+            currentWeapon.SetActive(true);
+            
+
+            Debug.Log("current weapon: " + currentWeapon);
+        }
     }
 
-    public void GiveWeapon(int index)
+    public void GiveWeapon(GameObject weapon)
     {
-        playerWeapons.Add(Instantiate(weapons[index], weaponTransform.position, weaponTransform.rotation, weaponTransform));
+        playerWeapons.Add(Instantiate(weapon, weaponTransform.position, weaponTransform.rotation, weaponTransform));
 
         currentWeapon.SetActive(false);
         currentWeapon = playerWeapons[playerWeapons.Count - 1];

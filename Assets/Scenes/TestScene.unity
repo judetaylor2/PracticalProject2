@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44659358, g: 0.49642974, b: 0.57482505, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -868,6 +868,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -122073751425180324, guid: 05bf9e4a172c9e44a851c651dfc8395c, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 8334117242991677937, guid: e77282fb86ac01c41ac9fa41ce20ef0b, type: 3}
     - target: {fileID: -122073751425180324, guid: 05bf9e4a172c9e44a851c651dfc8395c, type: 3}
       propertyPath: pickupSound
       value: 
@@ -3271,6 +3275,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -122073751425180324, guid: 05bf9e4a172c9e44a851c651dfc8395c, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 8334117242991677937, guid: 552ae2cb584ce7049827a982f14cf05b, type: 3}
+    - target: {fileID: -122073751425180324, guid: 05bf9e4a172c9e44a851c651dfc8395c, type: 3}
       propertyPath: pickupSound
       value: 
       objectReference: {fileID: 1167141303}
@@ -4076,6 +4084,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -122073751425180324, guid: 05bf9e4a172c9e44a851c651dfc8395c, type: 3}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 8334117242991677937, guid: 552ae2cb584ce7049827a982f14cf05b, type: 3}
     - target: {fileID: -122073751425180324, guid: 05bf9e4a172c9e44a851c651dfc8395c, type: 3}
       propertyPath: pickupSound
       value: 

@@ -10,10 +10,11 @@ public class WeaponMelee : MonoBehaviour
 
     float attackStopWatch;
     
-    public LayerMask enemyMask;
+    public LayerMask enemyMask, groundMask;
 
     Animator anim;
     AudioSource attackSound;
+    public ParticleSystem attackHole;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,7 @@ public class WeaponMelee : MonoBehaviour
         {
             anim.SetBool("isAttacking", true);
             attackStopWatch = 0;
+            
         }
         else if (attackStopWatch >= attackDelay && isAttacking)
         {
@@ -42,6 +44,10 @@ public class WeaponMelee : MonoBehaviour
     {
         isAttacking = true;
         attackSound.Play();
+        
+        RaycastHit r;
+        Physics.Raycast(transform.position, transform.forward, out r, 10, groundMask | enemyMask);
+        Instantiate(attackHole, r.point, Quaternion.LookRotation(r.normal));
     }
 
     void OnTriggerStay(Collider other)

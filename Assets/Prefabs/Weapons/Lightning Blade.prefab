@@ -2668,6 +2668,10 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 4096
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 64
+  attackHole: {fileID: 198000011002288308, guid: beb3acff7ab73944fb8f470f24d74ed3, type: 3}
 --- !u!65 &8334117242991677939
 BoxCollider:
   m_ObjectHideFlags: 0
