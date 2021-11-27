@@ -43,11 +43,19 @@ public class WeaponMelee : MonoBehaviour
     public void Attack()
     {
         isAttacking = true;
-        attackSound.Play();
         
         RaycastHit r;
-        Physics.Raycast(transform.position, transform.forward, out r, 10, groundMask | enemyMask);
-        Instantiate(attackHole, r.point, Quaternion.LookRotation(r.normal));
+        if (Physics.Raycast(transform.position, transform.forward, out r, 10, groundMask))
+        {
+            Instantiate(attackHole, r.point, Quaternion.LookRotation(r.normal));
+            
+        }
+    }
+
+    public void PlayAttackSound()
+    {
+        attackSound.Play();
+        
     }
 
     void OnTriggerStay(Collider other)
