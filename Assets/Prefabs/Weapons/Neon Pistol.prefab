@@ -2743,22 +2743,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aecb42a19583db94a4026ef0e1527f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentAmmo: 11
+  weaponDamage: 0
   maxAmmo: 11
-  weaponDamage: 11
-  attackDelay: 0.2
-  equipTime: 0.1
+  loadTime: 0.5
   reloadTime: 0.1
-  shootPoint: {fileID: 8334117242991677938}
+  attackDelay: 0.2
+  maxDistance: 50
   enemyMask:
     serializedVersion: 2
     m_Bits: 4096
   groundMask:
     serializedVersion: 2
     m_Bits: 64
-  weaponModelFront: {fileID: 229365010718183387}
-  shootEffect: {fileID: 5060085743836390220}
-  bulletHole: {fileID: 198000013440722320, guid: 02a509a7fa70ed740ba4197e20c5d32d, type: 3}
+  shootPoint: {fileID: 8334117242991677938}
+  shootParticle: {fileID: 5060085743836390220}
+  bulletParticle: {fileID: 198000013440722320, guid: 02a509a7fa70ed740ba4197e20c5d32d, type: 3}
+  anim: {fileID: 7894009244600964520}
   shootSound:
   - {fileID: 1108081365486573236}
   - {fileID: 6375452536817634010}

@@ -2624,7 +2624,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8334117242991677938}
-  - component: {fileID: 8334117242991677932}
+  - component: {fileID: 2566424376221084262}
   - component: {fileID: 8334117242991677939}
   - component: {fileID: 7894009244600964520}
   - component: {fileID: 1108081365486573236}
@@ -2651,7 +2651,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8334117242991677932
+--- !u!114 &2566424376221084262
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2664,7 +2664,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponDamage: 15
-  attackDelay: 0.75
+  attackDelay: 0.5
   equipTime: 1
   enemyMask:
     serializedVersion: 2
@@ -2672,8 +2672,6 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 64
-  attackSound: {fileID: 0}
-  groundHitSound: {fileID: 0}
   attackHole: {fileID: 198000011002288308, guid: beb3acff7ab73944fb8f470f24d74ed3, type: 3}
 --- !u!65 &8334117242991677939
 BoxCollider:
