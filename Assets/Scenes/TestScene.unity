@@ -4269,6 +4269,10 @@ PrefabInstance:
       propertyPath: hitSound
       value: 
       objectReference: {fileID: 854419058}
+    - target: {fileID: -2019290249391721791, guid: 5866bf87a0c9b8b459cebe8fab0529b0, type: 3}
+      propertyPath: maxHealth
+      value: 99999
+      objectReference: {fileID: 0}
     - target: {fileID: 4303464852176806568, guid: 5866bf87a0c9b8b459cebe8fab0529b0, type: 3}
       propertyPath: m_Name
       value: Enemy3

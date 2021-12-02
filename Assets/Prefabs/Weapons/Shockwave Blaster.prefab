@@ -2790,7 +2790,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8334117242991677938}
   - component: {fileID: 8334117242991677939}
-  - component: {fileID: 4503232372116066066}
+  - component: {fileID: 4611610985452880482}
   - component: {fileID: 7894009244600964520}
   - component: {fileID: 1108081365486573236}
   - component: {fileID: 6375452536817634010}
@@ -2833,7 +2833,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.0601804, z: 1.8181508}
   m_Center: {x: 0, y: 0.030090302, z: 0.40907538}
---- !u!114 &4503232372116066066
+--- !u!114 &4611610985452880482
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2842,31 +2842,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 8334117242991677937}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6aecb42a19583db94a4026ef0e1527f4, type: 3}
+  m_Script: {fileID: 11500000, guid: aa2234884be917ca3bbb2fb0023a160e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentAmmo: 6
-  maxAmmo: 6
-  weaponDamage: 20
+  weaponDamage: 30
+  maxAmmo: 5
+  loadTime: 1
+  reloadTime: 3
   attackDelay: 1
-  equipTime: 0.1
-  reloadTime: 2
-  shootPoint: {fileID: 8334117242991677938}
+  maxDistance: 20
   enemyMask:
     serializedVersion: 2
     m_Bits: 4096
   groundMask:
     serializedVersion: 2
     m_Bits: 64
-  weaponModelFront: {fileID: 0}
-  shootEffect: {fileID: 4336729014737201400}
-  bulletHole: {fileID: 198000013440722320, guid: 02a509a7fa70ed740ba4197e20c5d32d, type: 3}
+  shootPoint: {fileID: 8334117242991677938}
+  shootParticle: {fileID: 4336729014737201400}
+  bulletParticle: {fileID: 198000013440722320, guid: 02a509a7fa70ed740ba4197e20c5d32d, type: 3}
+  anim: {fileID: 7894009244600964520}
   shootSound:
   - {fileID: 1108081365486573236}
   - {fileID: 6375452536817634010}
   - {fileID: 2270800834079716434}
-  - {fileID: 4877402809134334487}
-  - {fileID: 4475615963924365251}
   reloadSound: {fileID: 8501590688963423416}
 --- !u!95 &7894009244600964520
 Animator:
@@ -2899,7 +2897,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 13a880e1778b101458c048d8211f2de5, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2995,7 +2993,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 13a880e1778b101458c048d8211f2de5, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3091,7 +3089,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 13a880e1778b101458c048d8211f2de5, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3187,7 +3185,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 13a880e1778b101458c048d8211f2de5, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3379,7 +3377,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: edd2a81706c16554dae05b870622eaf1, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
