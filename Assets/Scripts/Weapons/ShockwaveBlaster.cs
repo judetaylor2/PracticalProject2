@@ -6,8 +6,9 @@ public class ShockwaveBlaster : MonoBehaviour
 {
     //weapon stats
     public int weaponDamage;
-    public float maxAmmo, loadTime, reloadTime, attackDelay, maxDistance;
+    public float maxAmmo, loadTime, reloadTime, attackDelay, hitDelay = 0.2f, maxDistance;
     float currentAmmo;
+    bool isAttacking;
     
     //other
     public LayerMask enemyMask, groundMask;
@@ -21,7 +22,7 @@ public class ShockwaveBlaster : MonoBehaviour
     public AudioSource reloadSound;
 
     //stopwatches
-    float attackDelayStopwatch;
+    float attackDelayStopwatch, hitDelayStopwatch;
 
     /*void OnDrawGizmos()
     {
@@ -66,6 +67,19 @@ public class ShockwaveBlaster : MonoBehaviour
             shootSound[4].Play();
 
             currentAmmo--;
+
+            isAttacking = true;
+            
+        }
+        else if (currentAmmo == 0 && !anim.GetCurrentAnimatorStateInfo(0).IsName("Reload"))
+        {
+            anim.Play("Reload");
+        }
+
+        if (isAttacking && hitDelayStopwatch >= hitDelay)
+        {
+            isAttacking = false;
+            hitDelayStopwatch = 0;
             
             if (CheckRay(0))
             {
@@ -91,11 +105,11 @@ public class ShockwaveBlaster : MonoBehaviour
                 }
 
             }
-            
+
         }
-        else if (currentAmmo == 0 && !anim.GetCurrentAnimatorStateInfo(0).IsName("Reload"))
+        else if (isAttacking)
         {
-            anim.Play("Reload");
+            hitDelayStopwatch += Time.deltaTime;
         }
     }
 
@@ -129,7 +143,12 @@ public class ShockwaveBlaster : MonoBehaviour
     public void Reload()
     {
         currentAmmo = maxAmmo;
-        reloadSound.time = 0.3f;
+        //reloadSound.time = 0.3f;
+        reloadSound.Play();
+    }
+
+    public void PlayPumpSound()
+    {
         reloadSound.Play();
     }
 }

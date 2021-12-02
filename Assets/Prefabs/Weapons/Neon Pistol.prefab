@@ -2743,11 +2743,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aecb42a19583db94a4026ef0e1527f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDamage: 0
+  weaponDamage: 5
   maxAmmo: 11
   loadTime: 0.5
   reloadTime: 0.1
   attackDelay: 0.2
+  hitDelay: 0.1
   maxDistance: 50
   enemyMask:
     serializedVersion: 2
