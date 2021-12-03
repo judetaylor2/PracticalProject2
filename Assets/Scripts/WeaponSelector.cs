@@ -8,6 +8,7 @@ public class WeaponSelector : MonoBehaviour
     public List<GameObject> weapons, playerWeapons;
 
     GameObject currentWeapon;
+    int currentWeaponIndex;
     
     // Start is called before the first frame update
     void Start()
@@ -21,17 +22,18 @@ public class WeaponSelector : MonoBehaviour
         if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
             currentWeapon.SetActive(false);
-            GameObject g = currentWeapon;
-
-            for (int i = 0; i < playerWeapons.Count; i++)
+            
+            if (currentWeaponIndex >= playerWeapons.Count - 1)
             {
-                if (currentWeapon != playerWeapons[i])
-                {
-                    currentWeapon = playerWeapons[i];
-                    break;
-                }
+                currentWeaponIndex = 0;
+                currentWeapon = playerWeapons[currentWeaponIndex];
+                
             }
-
+            else
+            {
+                currentWeaponIndex++;
+                currentWeapon = playerWeapons[currentWeaponIndex];
+            }
     
             currentWeapon.SetActive(true);
             
@@ -41,17 +43,18 @@ public class WeaponSelector : MonoBehaviour
         else if (Input.GetAxis("Mouse ScrollWheel") < 0)
         {
             currentWeapon.SetActive(false);
-            GameObject g = currentWeapon;
-
-            for (int i = playerWeapons.Count - 1; i >= 0; i--)
+            
+            if (currentWeaponIndex <= 0)
             {
-                if (currentWeapon != playerWeapons[i])
-                {
-                    currentWeapon = playerWeapons[i];
-                    break;
-                }
+                currentWeaponIndex = playerWeapons.Count - 1;
+                currentWeapon = playerWeapons[currentWeaponIndex];
+                
             }
-
+            else
+            {
+                currentWeaponIndex--;
+                currentWeapon = playerWeapons[currentWeaponIndex];
+            }
     
             currentWeapon.SetActive(true);
             
