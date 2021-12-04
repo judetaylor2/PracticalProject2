@@ -30,14 +30,14 @@ public class Incinerator : MonoBehaviour
 
         if (currentAmmo <= 0)
         {
-            anim.Play("Reload");
             weaponSound.Stop();
             fireParticle.Stop();
         }
         else if (Input.GetAxis("Fire1") != 0)
         {
-            if (!fireParticle.isPlaying)
+           
             fireParticle.Play();
+         
 
             if (!weaponSound.isPlaying)
             {
@@ -52,12 +52,14 @@ public class Incinerator : MonoBehaviour
         else
         {
             fireParticle.Stop();
+            weaponSound.Stop();
+            damageStopwatch = 0;
         }
     }
 
     void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy") && damageStopwatch >= attackDelay && Input.GetAxis("Fire1") > 0 && !anim.GetCurrentAnimatorStateInfo(0).IsName("Reload"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy") && damageStopwatch >= attackDelay && Input.GetAxis("Fire1") > 0 && currentAmmo > 0)
         {
             other.GetComponent<EnemyStats>().TakeDamage((int) weaponDamage);
 

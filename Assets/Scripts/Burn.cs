@@ -23,7 +23,7 @@ public class Burn : MonoBehaviour
         }
         else if (burnDamageStopwatch >= burnDamageDelay)
         {
-            //transform.parent.GetComponent<EnemyStats>().TakeDamage(burnDamage);
+            transform.parent.GetComponent<EnemyStats>().TakeDamage(burnDamage);
             burnDamageStopwatch = 0;
         }
 

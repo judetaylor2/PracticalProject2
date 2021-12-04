@@ -9,6 +9,7 @@ public class WeaponSelector : MonoBehaviour
 
     GameObject currentWeapon;
     int currentWeaponIndex;
+    bool hasWeapon;
     
     // Start is called before the first frame update
     void Start()
@@ -19,47 +20,51 @@ public class WeaponSelector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        if (hasWeapon)
         {
-            currentWeapon.SetActive(false);
-            
-            if (currentWeaponIndex >= playerWeapons.Count - 1)
+            if (Input.GetAxis("Mouse ScrollWheel") > 0)
             {
-                currentWeaponIndex = 0;
-                currentWeapon = playerWeapons[currentWeaponIndex];
+                currentWeapon.SetActive(false);
                 
-            }
-            else
-            {
-                currentWeaponIndex++;
-                currentWeapon = playerWeapons[currentWeaponIndex];
-            }
-    
-            currentWeapon.SetActive(true);
-            
-
-            Debug.Log("current weapon: " + currentWeapon);
-        }
-        else if (Input.GetAxis("Mouse ScrollWheel") < 0)
-        {
-            currentWeapon.SetActive(false);
-            
-            if (currentWeaponIndex <= 0)
-            {
-                currentWeaponIndex = playerWeapons.Count - 1;
-                currentWeapon = playerWeapons[currentWeaponIndex];
+                if (currentWeaponIndex >= playerWeapons.Count - 1)
+                {
+                    currentWeaponIndex = 0;
+                    currentWeapon = playerWeapons[currentWeaponIndex];
+                    
+                }
+                else
+                {
+                    currentWeaponIndex++;
+                    currentWeapon = playerWeapons[currentWeaponIndex];
+                }
+        
+                currentWeapon.SetActive(true);
                 
-            }
-            else
-            {
-                currentWeaponIndex--;
-                currentWeapon = playerWeapons[currentWeaponIndex];
-            }
-    
-            currentWeapon.SetActive(true);
-            
 
-            Debug.Log("current weapon: " + currentWeapon);
+                Debug.Log("current weapon: " + currentWeapon);
+            }
+            else if (Input.GetAxis("Mouse ScrollWheel") < 0)
+            {
+                currentWeapon.SetActive(false);
+                
+                if (currentWeaponIndex <= 0)
+                {
+                    currentWeaponIndex = playerWeapons.Count - 1;
+                    currentWeapon = playerWeapons[currentWeaponIndex];
+                    
+                }
+                else
+                {
+                    currentWeaponIndex--;
+                    currentWeapon = playerWeapons[currentWeaponIndex];
+                }
+        
+                currentWeapon.SetActive(true);
+                
+
+                Debug.Log("current weapon: " + currentWeapon);
+            }
+            
         }
     }
 
@@ -69,5 +74,7 @@ public class WeaponSelector : MonoBehaviour
 
         currentWeapon.SetActive(false);
         currentWeapon = playerWeapons[playerWeapons.Count - 1];
+
+        hasWeapon = true;
     }
 }
