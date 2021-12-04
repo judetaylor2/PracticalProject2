@@ -135,3 +135,7 @@ https://assetstore.unity.com/packages/3d/props/weapons/starbugs-turrets-minigun-
 David, Stenfors, 2016. FPS Icons Pack:
 https://assetstore.unity.com/packages/2d/gui/icons/fps-icons-pack-45240
 [Accessed on 8th November 2021]
+
+Aligned Games, 2020. Polygonal Modern Weapons Asset Package:
+https://assetstore.unity.com/packages/3d/props/weapons/polygonal-modern-weapons-asset-package-53808
+[Accessed on 4th December 2021]
