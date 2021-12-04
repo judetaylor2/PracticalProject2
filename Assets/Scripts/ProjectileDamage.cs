@@ -10,8 +10,15 @@ public class ProjectileDamage : MonoBehaviour
     
     float DestroyStopWatch;
 
+    void Start()
+    {
+        sc = GetComponent<SphereCollider>();
+    }
+    
     void Update()
     {
+        DestroyStopWatch += Time.deltaTime;
+        
         if (DestroyStopWatch >= triggerDestroyTime)
         {
             sc.enabled = false;
