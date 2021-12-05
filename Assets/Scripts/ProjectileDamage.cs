@@ -7,12 +7,15 @@ public class ProjectileDamage : MonoBehaviour
     public int damageAmount;
     public float knockback, triggerDestroyTime;
     SphereCollider sc;
+    AudioSource explosionSound;
     
     float DestroyStopWatch;
 
     void Start()
     {
         sc = GetComponent<SphereCollider>();
+        explosionSound = GetComponent<AudioSource>();
+        explosionSound.time = 0.5f;
     }
     
     void Update()
@@ -22,6 +25,11 @@ public class ProjectileDamage : MonoBehaviour
         if (DestroyStopWatch >= triggerDestroyTime)
         {
             sc.enabled = false;
+        }
+
+        if (explosionSound.time >= 2f)
+        {
+            explosionSound.Stop();
         }
     }
     

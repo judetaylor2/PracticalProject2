@@ -24,7 +24,7 @@ public class MissileProjectile : MonoBehaviour
             Debug.Log("enemy list not null");
             
             //transform.LookAt(enemyList[0].transform);
-            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(enemyList[0].transform.position), 0.1f);
+            //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(enemyList[0].transform.position), 0.1f);
 
             rb.AddForce(transform.forward * projectileSpeed);
         }
