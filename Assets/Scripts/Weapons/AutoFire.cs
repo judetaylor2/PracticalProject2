@@ -34,6 +34,9 @@ public class AutoFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GetComponent<WeaponStats>().currentAmmo = (int)currentAmmo;
+        GetComponent<WeaponStats>().maxAmmo = (int)maxAmmo;
+        
         attackDelayStopwatch += Time.deltaTime;
 
         if (reloadSound.time >= 0.6f)

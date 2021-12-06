@@ -27,6 +27,9 @@ public class MissileLauncher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GetComponent<WeaponStats>().currentAmmo = (int)currentAmmo;
+        GetComponent<WeaponStats>().maxAmmo = (int)maxAmmo;
+        
         attackDelayStopwatch += Time.deltaTime;
         if (Input.GetAxis("Fire1") != 0 && attackDelayStopwatch >= attackDelay && currentAmmo > 0 && !anim.GetCurrentAnimatorStateInfo(0).IsName("Reload"))
         {

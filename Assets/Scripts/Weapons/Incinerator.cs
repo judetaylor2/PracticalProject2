@@ -13,6 +13,7 @@ public class Incinerator : MonoBehaviour
     public Animator anim;
     public AudioSource weaponSound;
     public GameObject burnObject;
+    bool weaponColliding;
 
     //stopwatches
     float damageStopwatch;
@@ -26,6 +27,9 @@ public class Incinerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GetComponent<WeaponStats>().currentAmmo = (int)currentAmmo;
+        GetComponent<WeaponStats>().maxAmmo = (int)maxAmmo;
+        
         damageStopwatch += Time.deltaTime;
 
         if (currentAmmo <= 0)
@@ -36,6 +40,12 @@ public class Incinerator : MonoBehaviour
         else if (Input.GetAxis("Fire1") != 0)
         {
            
+            if (damageStopwatch >= attackDelay && !weaponColliding)
+            {
+                currentAmmo--;
+                damageStopwatch = 0;
+            }
+            
             fireParticle.Play();
          
 
@@ -53,27 +63,40 @@ public class Incinerator : MonoBehaviour
         {
             fireParticle.Stop();
             weaponSound.Stop();
-            damageStopwatch = 0;
         }
     }
 
     void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy") && damageStopwatch >= attackDelay && Input.GetAxis("Fire1") > 0 && currentAmmo > 0)
+        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy") && currentAmmo > 0)
         {
-            other.GetComponent<EnemyStats>().TakeDamage((int) weaponDamage);
-
-            if (!other.gameObject.GetComponentInChildren<Burn>())
-            {
-                Instantiate(burnObject, other.transform.position, other.transform.rotation, other.transform);
-            }
-            else
-            {
-                other.gameObject.GetComponentInChildren<Burn>().burnTimeStopwatch = 0;
-            }
+            weaponColliding = true;
             
-            currentAmmo--;
-            damageStopwatch = 0;
+            if (damageStopwatch >= attackDelay && Input.GetAxis("Fire1") > 0)
+            {
+                other.GetComponent<EnemyStats>().TakeDamage((int) weaponDamage);
+
+                if (!other.gameObject.GetComponentInChildren<Burn>())
+                {
+                    Instantiate(burnObject, other.transform.position, other.transform.rotation, other.transform);
+                }
+                else
+                {
+                    other.gameObject.GetComponentInChildren<Burn>().burnTimeStopwatch = 0;
+                }
+                
+                currentAmmo--;
+                damageStopwatch = 0;
+                
+            }
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        {
+            weaponColliding = false;
         }
     }
 

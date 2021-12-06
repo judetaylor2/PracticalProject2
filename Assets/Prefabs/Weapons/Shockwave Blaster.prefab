@@ -2798,6 +2798,7 @@ GameObject:
   - component: {fileID: 4877402809134334487}
   - component: {fileID: 4475615963924365251}
   - component: {fileID: 8501590688963423416}
+  - component: {fileID: -7926079523996709857}
   m_Layer: 11
   m_Name: Shockwave Blaster
   m_TagString: Untagged
@@ -2850,6 +2851,7 @@ MonoBehaviour:
   loadTime: 1
   reloadTime: 3
   attackDelay: 0.85
+  hitDelay: 0.2
   maxDistance: 20
   enemyMask:
     serializedVersion: 2
@@ -3461,6 +3463,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-7926079523996709857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8334117242991677937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6506fe584149fca9aa026e9f61a5fb3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentAmmo: 0
+  maxAmmo: 0
 --- !u!1 &8334117243026822745
 GameObject:
   m_ObjectHideFlags: 0

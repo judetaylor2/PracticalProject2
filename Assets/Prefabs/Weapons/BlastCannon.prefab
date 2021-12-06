@@ -2577,6 +2577,7 @@ GameObject:
   - component: {fileID: 7894009244600964520}
   - component: {fileID: 1108081365486573236}
   - component: {fileID: 6375452536817634010}
+  - component: {fileID: 1522128095544198133}
   m_Layer: 11
   m_Name: BlastCannon
   m_TagString: Untagged
@@ -2613,7 +2614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponDamage: 5
-  projectileSpeed: 2500
+  projectileSpeed: 1500
   loadTime: 2
   maxAmmo: 6
   attackDelay: 0.75
@@ -2833,6 +2834,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1522128095544198133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8334117242991677937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6506fe584149fca9aa026e9f61a5fb3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentAmmo: 0
+  maxAmmo: 0
 --- !u!1 &8334117243026822745
 GameObject:
   m_ObjectHideFlags: 0

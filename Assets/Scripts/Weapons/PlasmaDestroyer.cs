@@ -13,7 +13,7 @@ public class PlasmaDestroyer : MonoBehaviour
     public Animator anim;
     public AudioSource weaponSound;
     public GameObject burnObject;
-    bool weaponAttacking = false;
+    bool weaponAttacking = false, weaponColliding;
 
     //stopwatches
     float damageStopwatch;
@@ -27,6 +27,9 @@ public class PlasmaDestroyer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        GetComponent<WeaponStats>().currentAmmo = (int)currentAmmo;
+        GetComponent<WeaponStats>().maxAmmo = (int)maxAmmo;
+        
 
         damageStopwatch += Time.deltaTime;
 
@@ -37,6 +40,14 @@ public class PlasmaDestroyer : MonoBehaviour
         }
         else if (Input.GetAxis("Fire1") != 0)
         {
+            if (damageStopwatch >= attackDelay && !weaponColliding)
+            {
+                currentAmmo--;
+                damageStopwatch = 0;
+            }
+            
+            
+            
             weaponAttacking = true;
            
             fireParticle.Play();
@@ -51,11 +62,12 @@ public class PlasmaDestroyer : MonoBehaviour
             {
                 weaponSound.Stop();
             }
+            
         }
         else
         {
             fireParticle.Stop();
-            damageStopwatch = 0;
+            //damageStopwatch = 0;
 
             if (weaponAttacking)
             {
@@ -75,12 +87,26 @@ public class PlasmaDestroyer : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy") && damageStopwatch >= attackDelay && Input.GetAxis("Fire1") > 0 && currentAmmo > 0)
+        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy") && currentAmmo > 0)
         {
-            other.GetComponent<EnemyStats>().TakeDamage((int) weaponDamage);
+            weaponColliding = true;
+            if (damageStopwatch >= attackDelay && Input.GetAxis("Fire1") != 0)
+            {
+                currentAmmo--;
+                other.GetComponent<EnemyStats>().TakeDamage((int) weaponDamage);
+                damageStopwatch = 0;
+                
+            }
             
-            currentAmmo--;
-            damageStopwatch = 0;
+            
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        {
+            weaponColliding = false;
         }
     }
 

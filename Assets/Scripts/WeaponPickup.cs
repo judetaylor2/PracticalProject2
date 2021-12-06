@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WeaponPickup : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class WeaponPickup : MonoBehaviour
     
     WeaponSelector weaponSelector;
     public GameObject weapon;
+    public GameObject uiObject;
     
     void Start()
     {
@@ -19,7 +21,7 @@ public class WeaponPickup : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            weaponSelector.GiveWeapon(weapon);
+            weaponSelector.GiveWeapon(weapon, uiObject);
 
             pickupSound.time = 1.0f;
             pickupSound.Play();
