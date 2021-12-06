@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class WeaponPickup : MonoBehaviour
 {
-    public AudioSource pickupSound;
+    AudioSource pickupSound;
     
     WeaponSelector weaponSelector;
-    public int weaponIndex;
     public GameObject weapon;
     
     void Start()
     {
-        weaponSelector = GameObject.FindWithTag("Player").GetComponent<WeaponSelector>();    
+        weaponSelector = GameObject.FindWithTag("Player").GetComponent<WeaponSelector>();
+        pickupSound = GetComponent<AudioSource>();    
     }
 
     void OnTriggerEnter(Collider other)
