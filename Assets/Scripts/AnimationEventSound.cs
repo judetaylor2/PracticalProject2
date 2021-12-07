@@ -4,19 +4,18 @@ using UnityEngine;
 
 public class AnimationEventSound : MonoBehaviour
 {
-    AudioSource[] audioSources;
-    public GameObject audioSourcesObject;
+    AudioSource audioSource;
     
     // Start is called before the first frame update
     void Start()
     {
-        audioSources = audioSourcesObject.GetComponentsInChildren<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void PlaySound(int index)
     {
-        audioSources[index].Play();
-        Debug.Log("playing audio");
+        audioSource.Play();
+        //Debug.Log("playing audio");
     }
     
 }

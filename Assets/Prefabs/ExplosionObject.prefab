@@ -9553,7 +9553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: 30
-  knockback: 750
+  knockback: 1000
   triggerDestroyTime: 1
 --- !u!198 &1922713357742133659
 ParticleSystem:
@@ -14266,7 +14266,7 @@ AudioSource:
   m_GameObject: {fileID: 1734514689910313019}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 8188130037368074771, guid: bd1c125324519932f83972734269db8a, type: 2}
   m_audioClip: {fileID: 8300000, guid: 1ea7d8c027d5e854fa52a335a87babae, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -14278,7 +14278,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 1000
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -14313,7 +14313,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.75
       inSlope: 0
       outSlope: 0
       tangentMode: 0

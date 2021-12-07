@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c0531a608028894481d3793eb7d0ebc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponIndex: 0
   weapon: {fileID: 0}
+  uiObject: {fileID: 0}
 --- !u!33 &343851469145580659
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -120,10 +120,10 @@ AudioSource:
   m_GameObject: {fileID: 6785014905334348937}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 8188130037368074771, guid: bd1c125324519932f83972734269db8a, type: 2}
   m_audioClip: {fileID: 8300000, guid: a50ce256ff440fe4ea5c0e95c796c753, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
