@@ -45,7 +45,7 @@ public class WeaponMelee : MonoBehaviour
         isAttacking = true;
         
         RaycastHit r;
-        if (Physics.Raycast(transform.position, transform.forward, out r, 10, groundMask))
+        if (Physics.Raycast(transform.position, transform.forward, out r, 3, groundMask))
         {
             Instantiate(attackHole, r.point, Quaternion.LookRotation(r.normal));
             
