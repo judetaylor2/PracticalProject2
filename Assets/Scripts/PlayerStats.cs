@@ -67,7 +67,7 @@ public class PlayerStats : MonoBehaviour
     void Update()
     {
         damageStopWatch += Time.deltaTime;
-        if (damageStopWatch >= 1.5f)
+        if (damageStopWatch >= 0.8f)
         {
             damageAmount = 0;
             damageStopWatch = 0;
@@ -92,7 +92,7 @@ public class PlayerStats : MonoBehaviour
         health -= damage;
         Debug.Log($"Damage: {(int)(previousVelocity * fallDamageMultiplier)} | health {health}");
         
-        if (damageAmount >= 20)
+        if (damageAmount >= 30)
         {
             StopCoroutine("DamageUI");
             //damageImage.color = new Color(1, 0, 0, 0);
