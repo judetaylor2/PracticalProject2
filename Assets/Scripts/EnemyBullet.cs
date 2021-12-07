@@ -51,7 +51,7 @@ public class EnemyBullet : MonoBehaviour
     {
         if (col.TryGetComponent<PlayerStats>(out PlayerStats p))
         {
-            p.TakeDamage(bulletDamage, 1);
+            p.TakeDamage(bulletDamage);
         }
         Destroy(gameObject);
     }

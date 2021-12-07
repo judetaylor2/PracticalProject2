@@ -19,6 +19,7 @@ public class EnemyStats : MonoBehaviour
         if (currentHealth <= 0)
         {
             hitSound.Stop();
+            GetComponent<CapsuleCollider>().enabled = false;
             Destroy(gameObject);
         }    
 

@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class Enemy2 : Enemy1
 {
+    public Transform shootPoint;
     public GameObject EnemyProjectile;
     public float weaponDelay = 2;
+    public ParticleSystem shootParticle, bulletParticle;
+    RaycastHit hit;
+    public LayerMask groundMask;
+
+    public int attackType;
     
     float weaponStopWatch;
 
@@ -13,6 +19,13 @@ public class Enemy2 : Enemy1
     public override void Start()
     {
         base.Start();
+    }
+
+    void OnDrawGizmos()
+    {
+        if (hit.point != null)
+        Gizmos.DrawLine(shootPoint.position, hit.point);
+        Gizmos.DrawSphere(hit.point, 0.5f);
     }
 
     // Update is called once per frame
@@ -36,7 +49,7 @@ public class Enemy2 : Enemy1
             anim.SetBool("isShooting", true);
             anim.SetBool("isFollowing", false);
             anim.SetBool("isAttacking", false);
-            Attack(2);
+            //Attack(attackType);
             agent.SetDestination(transform.position);
             transform.LookAt(new Vector3(playerStats.transform.position.x, transform.position.y , playerStats.transform.position.z));
         }
@@ -46,7 +59,7 @@ public class Enemy2 : Enemy1
             anim.SetBool("isAttacking", false);
             anim.SetBool("isShooting", false);
             Follow();
-            Attack(2);
+            //Attack(attackType);
             Debug.Log("follow");
         }
         else
@@ -73,9 +86,46 @@ public class Enemy2 : Enemy1
             
             if (weaponStopWatch >= weaponDelay)
             {
-                Instantiate(EnemyProjectile, transform);
+                Instantiate(EnemyProjectile, shootPoint);
                 weaponStopWatch = 0;
             }
         }
+        else if (attackIndex == 3)
+        {
+            //weaponStopWatch += Time.deltaTime;
+            
+            //if (weaponStopWatch >= weaponDelay)
+            //{
+                if (CheckRay())
+                {
+                    shootParticle.Play();
+                    if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Player"))
+                    {
+                        hit.transform.GetComponent<PlayerStats>().TakeDamage(attackDamage);
+                    }
+                    else if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Ground"))
+                    {
+                        Instantiate(bulletParticle, hit.point, Quaternion.LookRotation(hit.normal));
+                    }
+
+                    weaponStopWatch = 0;
+
+                }
+            //}
+        }
+    }
+    
+    bool CheckRay()
+    {
+        shootPoint.LookAt(GameObject.FindWithTag("Player").transform);
+        if (Physics.Raycast(shootPoint.position, shootPoint.forward /* - new Vector3(Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f))*/, out hit, 30, playerMask | groundMask))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
+

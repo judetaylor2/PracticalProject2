@@ -14,6 +14,7 @@ public class Incinerator : MonoBehaviour
     public AudioSource weaponSound;
     public GameObject burnObject;
     bool weaponColliding;
+    Collider enemyCollider;
 
     //stopwatches
     float damageStopwatch;
@@ -27,6 +28,11 @@ public class Incinerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!enemyCollider)
+        {
+            weaponColliding = false;
+        }
+        
         GetComponent<WeaponStats>().currentAmmo = (int)currentAmmo;
         GetComponent<WeaponStats>().maxAmmo = (int)maxAmmo;
         
@@ -70,6 +76,7 @@ public class Incinerator : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy") && currentAmmo > 0)
         {
+            enemyCollider = other;
             weaponColliding = true;
             
             if (damageStopwatch >= attackDelay && Input.GetAxis("Fire1") > 0)
@@ -92,13 +99,13 @@ public class Incinerator : MonoBehaviour
         }
     }
 
-    void OnTriggerExit(Collider other)
+    /*void OnTriggerExit(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
             weaponColliding = false;
         }
-    }
+    }*/
 
     public void Reload()
     {

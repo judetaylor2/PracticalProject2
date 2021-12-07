@@ -2846,7 +2846,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa2234884be917ca3bbb2fb0023a160e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDamage: 30
+  weaponDamage: 40
   maxAmmo: 5
   loadTime: 1
   reloadTime: 3

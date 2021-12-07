@@ -48,7 +48,7 @@ public class ProjectileDamage : MonoBehaviour
         
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
-            other.GetComponent<PlayerStats>().TakeDamage(damageAmount, 0);
+            other.GetComponent<PlayerStats>().TakeDamage(damageAmount);
 
             Rigidbody rb;
             if (other.TryGetComponent<Rigidbody>(out rb))

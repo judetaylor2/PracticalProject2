@@ -81,7 +81,7 @@ public class Enemy1 : MonoBehaviour
 
         if (attackStopWatch >= attackDelay)
         {
-            playerStats.TakeDamage(attackDamage, 0);
+            playerStats.TakeDamage(attackDamage);
             attackStopWatch = 0;
         }
     }

@@ -2665,7 +2665,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponDamage: 15
-  attackDelay: 0.5
+  attackDelay: 0.3
   equipTime: 1
   enemyMask:
     serializedVersion: 2

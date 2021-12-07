@@ -2614,7 +2614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponDamage: 5
-  projectileSpeed: 1500
+  projectileSpeed: 1000
   loadTime: 2
   maxAmmo: 6
   attackDelay: 0.75

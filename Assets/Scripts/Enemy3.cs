@@ -18,7 +18,7 @@ public class Enemy3 : Enemy2
         
         if (playerInFollowRange)
         {
-            Attack(2);
+            Attack(attackType);
             transform.LookAt(playerStats.transform);
             
             if (!playerInAttackRange)

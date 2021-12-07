@@ -44,7 +44,7 @@ public class PlayerStats : MonoBehaviour
         if (previousVelocity >= fallDamageDistance && player.isGrounded)
         {
             int damage = (int)(previousVelocity * fallDamageMultiplier);
-            TakeDamage(damage, 0);
+            TakeDamage(damage);
             
             StartCoroutine("DamageUI");
             
@@ -84,7 +84,7 @@ public class PlayerStats : MonoBehaviour
         //damageImage.color = Color.Lerp(Color.red, Color.blue, 0.5f);
     }
 
-    public void TakeDamage(int damage, int damageSoundIndex)
+    public void TakeDamage(int damage)
     {
         damageStopWatch = 0;
         damageAmount += damage;
@@ -92,21 +92,23 @@ public class PlayerStats : MonoBehaviour
         health -= damage;
         Debug.Log($"Damage: {(int)(previousVelocity * fallDamageMultiplier)} | health {health}");
         
-        if (damageAmount >= 5)
+        if (damageAmount >= 20)
         {
             StopCoroutine("DamageUI");
             //damageImage.color = new Color(1, 0, 0, 0);
             camNode.transform.localRotation = Quaternion.Euler(camNode.transform.localRotation.x, camNode.transform.localRotation.y, 0);
             StartCoroutine("DamageUI");
             
-            if (damageSoundIndex == 0)
-            {
-                meleeDamageSound.Play();
-            }
-            else
-            {
-                bulletDamageSound.Play();    
-            }
+            
+        
+        
+            bulletDamageSound.Play();    
+        
+        }
+        else
+        {
+            meleeDamageSound.Play();
+            
         }
     }
     

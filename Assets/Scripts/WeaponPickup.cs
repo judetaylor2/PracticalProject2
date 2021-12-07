@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class WeaponPickup : MonoBehaviour
 {
@@ -27,6 +26,7 @@ public class WeaponPickup : MonoBehaviour
             pickupSound.Play();
             
             gameObject.GetComponent<MeshRenderer>().enabled = false;
+            gameObject.GetComponent<BoxCollider>().enabled = false;
             
         }
     }

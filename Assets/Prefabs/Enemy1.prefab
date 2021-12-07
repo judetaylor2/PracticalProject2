@@ -177,7 +177,7 @@ MonoBehaviour:
   moveSpeed: 1500
   rotateSpeed: 25
   radiusTrigger: 30
-  attackTrigger: 5
+  attackTrigger: 2
   shootTrigger: 0
   attackDelay: 0.7
   patrolTimes: {x: 3, y: 7}
