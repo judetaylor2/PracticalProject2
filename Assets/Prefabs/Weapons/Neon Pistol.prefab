@@ -2602,7 +2602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponDamage: 5
-  maxAmmo: 11
+  maxAmmo: 20
   loadTime: 0.5
   reloadTime: 0.1
   attackDelay: 0.2
