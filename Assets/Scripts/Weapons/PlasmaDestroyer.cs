@@ -15,6 +15,7 @@ public class PlasmaDestroyer : MonoBehaviour
     public GameObject burnObject;
     bool weaponAttacking = false, weaponColliding;
     Collider enemyCollider;
+    
 
     //stopwatches
     float damageStopwatch;
@@ -120,6 +121,9 @@ public class PlasmaDestroyer : MonoBehaviour
 
     public void Reload()
     {
+    
         currentAmmo = maxAmmo;
+            
+        
     }
 }

@@ -15,6 +15,7 @@ public class Incinerator : MonoBehaviour
     public GameObject burnObject;
     bool weaponColliding;
     Collider enemyCollider;
+    
 
     //stopwatches
     float damageStopwatch;
@@ -110,5 +111,6 @@ public class Incinerator : MonoBehaviour
     public void Reload()
     {
         currentAmmo = maxAmmo;
+      
     }
 }

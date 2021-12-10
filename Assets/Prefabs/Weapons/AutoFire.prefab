@@ -2615,6 +2615,8 @@ MonoBehaviour:
   shootParticle: {fileID: 1989028444778082459}
   bulletParticle: {fileID: 198000013440722320, guid: 02a509a7fa70ed740ba4197e20c5d32d, type: 3}
   anim: {fileID: 7894009244600964520}
+  currentClips: 0
+  maxClips: 2
   shootSound:
   - {fileID: 1108081365486573236}
   - {fileID: 6375452536817634010}
@@ -4214,6 +4216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentAmmo: 0
   maxAmmo: 0
+  maxClips: 0
 --- !u!1 &8334117243026822745
 GameObject:
   m_ObjectHideFlags: 0

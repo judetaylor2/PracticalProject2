@@ -13,6 +13,9 @@ public class MissileLauncher : MonoBehaviour
     public AudioSource weaponSound, reloadSound;
     public GameObject grenadeProjectile;
     public Transform shootPosition;
+    [HideInInspector] public int currentClips;
+    public int maxClips;
+    
     
     //stopwatches
     float attackDelayStopwatch;
@@ -29,6 +32,8 @@ public class MissileLauncher : MonoBehaviour
     {
         GetComponent<WeaponStats>().currentAmmo = (int)currentAmmo;
         GetComponent<WeaponStats>().maxAmmo = (int)maxAmmo;
+        GetComponent<WeaponStats>().maxClips = maxClips;
+        GetComponent<WeaponStats>().currentClips = currentClips;
         
         attackDelayStopwatch += Time.deltaTime;
         if (Input.GetAxis("Fire1") != 0 && attackDelayStopwatch >= attackDelay && currentAmmo > 0 && !anim.GetCurrentAnimatorStateInfo(0).IsName("Reload"))
@@ -44,7 +49,7 @@ public class MissileLauncher : MonoBehaviour
             
             GameObject projectile = Instantiate(grenadeProjectile, shootPosition.position, shootPosition.rotation, null);
         }
-        else if (currentAmmo <= 0 && !anim.GetCurrentAnimatorStateInfo(0).IsName("Reload"))
+        else if (((currentAmmo <= 0 && !anim.GetCurrentAnimatorStateInfo(0).IsName("Reload")) || Input.GetAxis("Reload") != 0) && currentClips > 0)
         {
             anim.Play("Reload");
         }
@@ -52,7 +57,12 @@ public class MissileLauncher : MonoBehaviour
     
     public void Reload()
     {
-        currentAmmo = maxAmmo;
-        reloadSound.Play();
+        if (currentClips > 0)
+        {
+            currentAmmo = maxAmmo;
+            reloadSound.Play();
+            currentClips--;
+            
+        }
     }
 }

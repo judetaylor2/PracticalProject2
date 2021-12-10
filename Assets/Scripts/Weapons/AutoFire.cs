@@ -16,6 +16,8 @@ public class AutoFire : MonoBehaviour
     public ParticleSystem shootParticle, bulletParticle;
     public Animator anim;
     RaycastHit hit;
+    [HideInInspector] public int currentClips;
+    public int maxClips;
     
     //sound
     public AudioSource[] shootSound;
@@ -34,8 +36,11 @@ public class AutoFire : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         GetComponent<WeaponStats>().currentAmmo = (int)currentAmmo;
         GetComponent<WeaponStats>().maxAmmo = (int)maxAmmo;
+        GetComponent<WeaponStats>().maxClips = maxClips;
+        GetComponent<WeaponStats>().currentClips = currentClips;
         
         attackDelayStopwatch += Time.deltaTime;
 
@@ -69,7 +74,7 @@ public class AutoFire : MonoBehaviour
             
             isAttacking = true;
         }
-        else if (currentAmmo == 0 && !anim.GetCurrentAnimatorStateInfo(0).IsName("Reload"))
+        else if (((currentAmmo == 0 && !anim.GetCurrentAnimatorStateInfo(0).IsName("Reload")) || Input.GetAxis("Reload") != 0) && currentClips > 0)
         {
             anim.Play("Reload");
             shootParticle.Stop();
@@ -117,8 +122,13 @@ public class AutoFire : MonoBehaviour
 
     public void Reload()
     {
-        currentAmmo = maxAmmo;
-        reloadSound.time = 0.3f;
-        reloadSound.Play();
+        if (currentClips > 0)
+        {
+            currentAmmo = maxAmmo;
+            reloadSound.time = 0.3f;
+            reloadSound.Play();
+            currentClips--;
+            
+        }
     }
 }

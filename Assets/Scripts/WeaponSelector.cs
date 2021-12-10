@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class WeaponSelector : MonoBehaviour
 {
     public Transform weaponTransform;
-    List<GameObject> playerWeapons = new List<GameObject>();
+    [HideInInspector] public List<GameObject> playerWeapons = new List<GameObject>();
     List<GameObject> weaponUIObjects = new List<GameObject>();
 
     public GameObject currentWeaponUIObject;

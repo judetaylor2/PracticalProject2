@@ -15,6 +15,7 @@ public class WeaponMelee : MonoBehaviour
     Animator anim;
     AudioSource attackSound;
     public ParticleSystem attackHole;
+    [HideInInspector] public bool canReload;
 
     // Start is called before the first frame update
     void Start()

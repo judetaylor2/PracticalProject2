@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class WeaponStats : MonoBehaviour
 {
-    [HideInInspector] public int currentAmmo, maxAmmo;
+    [HideInInspector] public int currentAmmo, maxAmmo, maxClips, currentClips;
 }

@@ -16,6 +16,9 @@ public class ShockwaveBlaster : MonoBehaviour
     public ParticleSystem shootParticle, bulletParticle;
     public Animator anim;
     RaycastHit[] hit = new RaycastHit[5];
+    [HideInInspector] public int currentClips;
+    public int maxClips;
+    
     
     //sound
     public AudioSource[] shootSound;
@@ -43,6 +46,8 @@ public class ShockwaveBlaster : MonoBehaviour
     {
         GetComponent<WeaponStats>().currentAmmo = (int)currentAmmo;
         GetComponent<WeaponStats>().maxAmmo = (int)maxAmmo;
+        GetComponent<WeaponStats>().maxClips = maxClips;
+        GetComponent<WeaponStats>().currentClips = currentClips;
         
         attackDelayStopwatch += Time.deltaTime;
 
@@ -74,7 +79,7 @@ public class ShockwaveBlaster : MonoBehaviour
             isAttacking = true;
             
         }
-        else if (currentAmmo == 0 && !anim.GetCurrentAnimatorStateInfo(0).IsName("Reload"))
+        else if (((currentAmmo == 0 && !anim.GetCurrentAnimatorStateInfo(0).IsName("Reload")) || Input.GetAxis("Reload") != 0) && currentClips > 0)
         {
             anim.Play("Reload");
         }
@@ -145,9 +150,14 @@ public class ShockwaveBlaster : MonoBehaviour
 
     public void Reload()
     {
-        currentAmmo = maxAmmo;
-        //reloadSound.time = 0.3f;
-        reloadSound.Play();
+        if (currentClips > 0)
+        {
+            currentAmmo = maxAmmo;
+            //reloadSound.time = 0.3f;
+            reloadSound.Play();
+            currentClips --;
+            
+        }
     }
 
     public void PlayPumpSound()

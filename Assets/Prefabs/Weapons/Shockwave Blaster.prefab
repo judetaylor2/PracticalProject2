@@ -2863,6 +2863,8 @@ MonoBehaviour:
   shootParticle: {fileID: 4336729014737201400}
   bulletParticle: {fileID: 198000013440722320, guid: 02a509a7fa70ed740ba4197e20c5d32d, type: 3}
   anim: {fileID: 7894009244600964520}
+  currentClips: 0
+  maxClips: 2
   shootSound:
   - {fileID: 1108081365486573236}
   - {fileID: 6375452536817634010}
@@ -3477,6 +3479,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentAmmo: 0
   maxAmmo: 0
+  maxClips: 0
 --- !u!1 &8334117243026822745
 GameObject:
   m_ObjectHideFlags: 0
@@ -3651,13 +3654,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ab8d8660aed4e5b79a22a22accd72da, type: 3}
---- !u!4 &3997683443828597086 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5429082064263554523, guid: 9ab8d8660aed4e5b79a22a22accd72da, type: 3}
-  m_PrefabInstance: {fileID: 8947920967078937733}
-  m_PrefabAsset: {fileID: 0}
 --- !u!198 &4336729014737201400 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 4612335529076780157, guid: 9ab8d8660aed4e5b79a22a22accd72da, type: 3}
+  m_PrefabInstance: {fileID: 8947920967078937733}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3997683443828597086 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5429082064263554523, guid: 9ab8d8660aed4e5b79a22a22accd72da, type: 3}
   m_PrefabInstance: {fileID: 8947920967078937733}
   m_PrefabAsset: {fileID: 0}

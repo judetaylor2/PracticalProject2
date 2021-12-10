@@ -2623,6 +2623,8 @@ MonoBehaviour:
   reloadSound: {fileID: 6375452536817634010}
   grenadeProjectile: {fileID: 3051189614904008206, guid: adbcac23ddad9d2b3a4ad823ef79768f, type: 3}
   shootPosition: {fileID: 5189942242634940591}
+  currentClips: 0
+  maxClips: 1
 --- !u!95 &7894009244600964520
 Animator:
   serializedVersion: 3
@@ -2848,6 +2850,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentAmmo: 0
   maxAmmo: 0
+  maxClips: 0
 --- !u!1 &8334117243026822745
 GameObject:
   m_ObjectHideFlags: 0
