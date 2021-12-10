@@ -32,6 +32,7 @@ public class NeonPistol : MonoBehaviour
     void Start()
     {
         currentAmmo = maxAmmo;
+        currentClips = maxClips;
     }
 
     // Update is called once per frame

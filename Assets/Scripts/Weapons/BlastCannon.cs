@@ -24,6 +24,7 @@ public class BlastCannon : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         currentAmmo = maxAmmo;
+        currentClips = maxClips;
     }
 
     // Update is called once per frame
