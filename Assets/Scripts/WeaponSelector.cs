@@ -88,20 +88,24 @@ public class WeaponSelector : MonoBehaviour
             
             currentWeaponUIObject.transform.GetComponentInChildren<TMPro.TMP_Text>().text = currentWeapon.GetComponent<WeaponStats>().currentAmmo + " / " + currentWeapon.GetComponent<WeaponStats>().maxAmmo;
 
-            if (!currentWeapon.GetComponent<WeaponStats>().GetComponent<Incinerator>() || !currentWeapon.GetComponent<WeaponStats>().GetComponent<PlasmaDestroyer>() || !currentWeapon.GetComponent<WeaponStats>().GetComponent<WeaponMelee>())
-            {
-                currentWeaponUIObject.transform.GetChild(3).GetComponentInChildren<TMPro.TMP_Text>().text = "" + currentWeapon.GetComponent<WeaponStats>().currentClips;
+ 
+            currentWeaponUIObject.transform.GetChild(3).GetComponentInChildren<TMPro.TMP_Text>().text = "" + currentWeapon.GetComponent<WeaponStats>().currentClips;
 
-                
-                
-                currentWeaponUIObject.GetComponentInChildren<TMPro.TMP_Text>().color = ammoColours.Evaluate(currentWeapon.GetComponent<WeaponStats>().currentAmmo / (Mathf.Clamp(currentWeapon.GetComponent<WeaponStats>().maxAmmo, 1, 100)));
-                currentWeaponUIObject.GetComponentInChildren<Slider>().fillRect.GetComponent<Image>().color = ammoColours.Evaluate(currentWeapon.GetComponent<WeaponStats>().currentAmmo / (Mathf.Clamp(currentWeapon.GetComponent<WeaponStats>().maxAmmo, 1, 100)));
-                currentWeaponUIObject.transform.GetChild(2).GetComponent<Image>().color = ammoColours.Evaluate(currentWeapon.GetComponent<WeaponStats>().currentAmmo / (Mathf.Clamp(currentWeapon.GetComponent<WeaponStats>().maxAmmo, 1, 100)));
-                currentWeaponUIObject.transform.GetChild(3).GetChild(1).GetComponent<Image>().color = ammoColours.Evaluate(currentWeapon.GetComponent<WeaponStats>().currentAmmo / (Mathf.Clamp(currentWeapon.GetComponent<WeaponStats>().maxAmmo, 1, 100)));
-                currentWeaponUIObject.transform.GetChild(3).GetComponentInChildren<TMPro.TMP_Text>().color = ammoColours.Evaluate(currentWeapon.GetComponent<WeaponStats>().currentAmmo / (Mathf.Clamp(currentWeapon.GetComponent<WeaponStats>().maxAmmo, 1, 100)));
+            //change colour depending on ammo left
+            //Color32 c = ammoColours.Evaluate(100 * currentWeapon.GetComponent<WeaponStats>().currentAmmo / (Mathf.Clamp(currentWeapon.GetComponent<WeaponStats>().maxAmmo, 1, 100)));
+            float f = (float)currentWeapon.GetComponent<WeaponStats>().currentAmmo / Mathf.Clamp((float)currentWeapon.GetComponent<WeaponStats>().maxAmmo, 1, 100);
+            Color c = ammoColours.Evaluate(f);
             
-                
-            }
+            Debug.Log("colours: " + f + " ammocolours: " + ammoColours.Evaluate(f));
+            
+            currentWeaponUIObject.GetComponentInChildren<TMPro.TMP_Text>().color = c;
+            currentWeaponUIObject.GetComponentInChildren<Slider>().fillRect.GetComponent<Image>().color = c;
+            currentWeaponUIObject.transform.GetChild(2).GetComponent<Image>().color = c;
+            currentWeaponUIObject.transform.GetChild(3).GetChild(1).GetComponent<Image>().color = c;
+            currentWeaponUIObject.transform.GetChild(3).GetComponentInChildren<TMPro.TMP_Text>().color = c;
+        
+            
+        
             
         }
 

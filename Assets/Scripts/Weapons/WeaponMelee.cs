@@ -13,7 +13,7 @@ public class WeaponMelee : MonoBehaviour
     public LayerMask enemyMask, groundMask;
 
     Animator anim;
-    AudioSource attackSound;
+    public AudioSource attackSound, hitSound;
     public ParticleSystem attackHole;
     [HideInInspector] public bool canReload;
 
@@ -21,7 +21,7 @@ public class WeaponMelee : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        attackSound = GetComponent<AudioSource>();
+        
     }
 
     // Update is called once per frame
@@ -39,6 +39,11 @@ public class WeaponMelee : MonoBehaviour
         {
             isAttacking = false;
         }
+
+        if (hitSound.time >= 12.5f)
+        {
+            hitSound.Stop();
+        }
     }
 
     public void Attack()
@@ -49,6 +54,9 @@ public class WeaponMelee : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.forward, out r, 3, groundMask))
         {
             Instantiate(attackHole, r.point, Quaternion.LookRotation(r.normal));
+            
+            hitSound.time = 9.3f;
+            hitSound.Play();
             
         }
     }
