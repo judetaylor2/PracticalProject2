@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3336342}
   - component: {fileID: 2309268}
   - component: {fileID: 6410544}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wood_wall.014 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 3343164}
   - component: {fileID: 2362394}
   - component: {fileID: 6414930}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wood_wall.007 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +206,7 @@ GameObject:
   - component: {fileID: 3334770}
   - component: {fileID: 2360462}
   - component: {fileID: 6443414}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wood_column.004 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: 3303018}
   - component: {fileID: 2346658}
   - component: {fileID: 6480828}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: platform.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -399,7 +399,7 @@ GameObject:
   - component: {fileID: 3305984}
   - component: {fileID: 2311008}
   - component: {fileID: 6489720}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wood_wall.014
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -496,7 +496,7 @@ GameObject:
   - component: {fileID: 3344608}
   - component: {fileID: 2341482}
   - component: {fileID: 6424718}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wood_wall.016 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -593,7 +593,7 @@ GameObject:
   - component: {fileID: 3399440}
   - component: {fileID: 2307058}
   - component: {fileID: 6473882}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wood_wall.018
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -690,7 +690,7 @@ GameObject:
   - component: {fileID: 3353452}
   - component: {fileID: 2386034}
   - component: {fileID: 6446426}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wood_wall.016 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -787,7 +787,7 @@ GameObject:
   - component: {fileID: 3367464}
   - component: {fileID: 2328642}
   - component: {fileID: 6463450}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wood_wall.007 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -881,7 +881,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 435648}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: House.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -931,7 +931,7 @@ GameObject:
   - component: {fileID: 3392340}
   - component: {fileID: 2301260}
   - component: {fileID: 6427108}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wood_wall.007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1028,7 +1028,7 @@ GameObject:
   - component: {fileID: 3304332}
   - component: {fileID: 2312690}
   - component: {fileID: 6492188}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wood_column.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1124,7 +1124,7 @@ GameObject:
   - component: {fileID: 3313638}
   - component: {fileID: 2374782}
   - component: {fileID: 6474582}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: platform.003 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1221,7 +1221,7 @@ GameObject:
   - component: {fileID: 3319444}
   - component: {fileID: 2342316}
   - component: {fileID: 6430690}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wood_wall.018 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1318,7 +1318,7 @@ GameObject:
   - component: {fileID: 3358294}
   - component: {fileID: 2363148}
   - component: {fileID: 6435076}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wood_column.004 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1414,7 +1414,7 @@ GameObject:
   - component: {fileID: 3378658}
   - component: {fileID: 2391238}
   - component: {fileID: 6489466}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wood_wall_enter.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1511,7 +1511,7 @@ GameObject:
   - component: {fileID: 3399008}
   - component: {fileID: 2302008}
   - component: {fileID: 6468648}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wood_wall.007 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1608,7 +1608,7 @@ GameObject:
   - component: {fileID: 3314162}
   - component: {fileID: 2300826}
   - component: {fileID: 6422092}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: wood_wall.016 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
