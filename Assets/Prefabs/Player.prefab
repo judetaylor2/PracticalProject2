@@ -1900,12 +1900,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63033e5ad81bbb9479ef1c15dcbd9cbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  regularMoveSpeed: 100
-  duckMoveSpeed: 40
+  regularMoveSpeed: 125
+  duckMoveSpeed: 60
   jumpHeight: 1000
   duckHeight: 0.3
   initialGravity: 50
   constantGravity: -9.81
+  slopeLimit: 0.5
   cameraTransform: {fileID: 5355481396998579967}
   duckCameraPositionY: 0.2
   isGrounded: 1

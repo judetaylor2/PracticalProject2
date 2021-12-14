@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     //Player
     Rigidbody rb;
-    public float regularMoveSpeed, duckMoveSpeed, jumpHeight, duckHeight, initialGravity, constantGravity = -9.81f;
+    public float regularMoveSpeed, duckMoveSpeed, jumpHeight, duckHeight, initialGravity, constantGravity = -9.81f, slopeLimit;
     float moveSpeed, regularHeight, lastActiveInputX, lastActiveInputZ;
     Vector3 lastGroundedDirectionRight, lastGroundedDirectionForward;
     CapsuleCollider capsuleCollider;
@@ -53,10 +53,25 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         //add constant gravity to the player
-        if (isGrounded)
+        if (isGrounded && slopeHit.normal.y > slopeLimit)
+        {
         rb.AddForce(slopeHit.normal * constantGravity);
+            
+        }
+        
+        else if (isGrounded && slopeHit.normal.y <= slopeLimit)
+        {
+        rb.AddForce(Vector3.up * constantGravity * 10);
+
+        }
+
         else
+        {
         rb.AddForce(Vector3.up * constantGravity);
+
+        }
+
+        Debug.Log("Slopehit Normal y = " + slopeHit.normal.y);
 
         
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
@@ -141,7 +156,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         //jump in regular update method to avoid inconsistent movement
-        if(Input.GetButtonDown("Jump") && isGrounded)
+        if(Input.GetButtonDown("Jump") && isGrounded && slopeHit.normal.y > slopeLimit)
         {
             rb.AddForce(/*-Physics.gravity.y * */Vector3.up * jumpHeight, ForceMode.Acceleration);
         }
