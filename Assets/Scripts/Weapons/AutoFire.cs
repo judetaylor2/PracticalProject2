@@ -92,7 +92,7 @@ public class AutoFire : MonoBehaviour
 
             if (CheckRay())
             {
-                if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+                if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Enemy") || hit.transform.gameObject.layer == LayerMask.NameToLayer("Box"))
                 {
                     hit.transform.GetComponent<EnemyStats>().TakeDamage(weaponDamage);
                 }

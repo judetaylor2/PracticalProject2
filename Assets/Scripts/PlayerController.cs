@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Slopehit Normal y = " + slopeHit.normal.y);
 
         
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask | LayerMask.NameToLayer("Box"));
 
         float x = Input.GetAxisRaw("Horizontal");
         float z = Input.GetAxisRaw("Vertical");

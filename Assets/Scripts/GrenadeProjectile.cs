@@ -8,7 +8,7 @@ public class GrenadeProjectile : MonoBehaviour
     
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Ground") || other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ground") || other.gameObject.layer == LayerMask.NameToLayer("Enemy") || other.gameObject.layer == LayerMask.NameToLayer("Box"))
         {
             Instantiate(explosionObject, transform.position, Quaternion.Euler(0, 0, 0), null);
             Destroy(gameObject);

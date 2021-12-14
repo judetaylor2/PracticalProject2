@@ -94,7 +94,7 @@ public class PlasmaDestroyer : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy") && currentAmmo > 0)
+        if ((other.gameObject.layer == LayerMask.NameToLayer("Enemy") || other.gameObject.layer == LayerMask.NameToLayer("Box")) && currentAmmo > 0)
         {
             enemyCollider = other;
             

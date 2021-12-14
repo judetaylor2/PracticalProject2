@@ -35,7 +35,7 @@ public class ProjectileDamage : MonoBehaviour
     
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        if (other.gameObject.layer == LayerMask.NameToLayer("Enemy") || other.gameObject.layer == LayerMask.NameToLayer("Box"))
         {
             other.GetComponent<EnemyStats>().TakeDamage(damageAmount);
             
