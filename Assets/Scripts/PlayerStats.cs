@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -53,7 +54,8 @@ public class PlayerStats : MonoBehaviour
 
         if (health <= 0)
         {
-            
+            Debug.Log("Reloading scene");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
         if (!player.isGrounded)
