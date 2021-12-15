@@ -13,7 +13,7 @@ public class ShockwaveBlaster : MonoBehaviour
     //other
     public LayerMask enemyMask, groundMask;
     public Transform shootPoint;
-    public ParticleSystem shootParticle, bulletParticle;
+    public ParticleSystem shootParticle, bulletParticle, bulletSparksParticle;
     public Animator anim;
     RaycastHit[] hit = new RaycastHit[5];
     [HideInInspector] public int currentClips;
@@ -101,6 +101,8 @@ public class ShockwaveBlaster : MonoBehaviour
                         {
                             hit[0].transform.GetComponent<EnemyStats>().TakeDamage(Mathf.Clamp((weaponDamage) - (int) Vector3.Distance(transform.position, hit[0].transform.position), 0, weaponDamage));
                             Debug.Log("weapon damage: " + (Mathf.Clamp((weaponDamage) - (int) Vector3.Distance(transform.position, hit[0].transform.position), 0, 50)));
+
+                            Instantiate(bulletSparksParticle, hit[i].point, Quaternion.LookRotation(hit[i].normal));
 
                             isFirstShot = false;
                         }

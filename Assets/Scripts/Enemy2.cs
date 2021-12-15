@@ -118,7 +118,7 @@ public class Enemy2 : Enemy1
     bool CheckRay()
     {
         shootPoint.LookAt(GameObject.FindWithTag("Player").transform);
-        if (Physics.Raycast(shootPoint.position, shootPoint.forward /* - new Vector3(Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f))*/, out hit, 30, playerMask | groundMask | LayerMask.NameToLayer("Box")))
+        if (Physics.Raycast(shootPoint.position, shootPoint.forward /* - new Vector3(Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f))*/, out hit, 30, playerMask | groundMask | LayerMask.GetMask("Box")))
         {
             return true;
         }

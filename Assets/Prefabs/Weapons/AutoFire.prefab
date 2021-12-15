@@ -2614,6 +2614,7 @@ MonoBehaviour:
   shootPoint: {fileID: 8334117242991677938}
   shootParticle: {fileID: 1989028444778082459}
   bulletParticle: {fileID: 198000013440722320, guid: 02a509a7fa70ed740ba4197e20c5d32d, type: 3}
+  bulletSparksParticle: {fileID: 198000013440722320, guid: 42ec00e1f2b0d5a2ebd66cb533481211, type: 3}
   anim: {fileID: 7894009244600964520}
   currentClips: 0
   maxClips: 2

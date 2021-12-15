@@ -13,7 +13,7 @@ public class AutoFire : MonoBehaviour
     //other
     public LayerMask enemyMask, groundMask;
     public Transform shootPoint;
-    public ParticleSystem shootParticle, bulletParticle;
+    public ParticleSystem shootParticle, bulletParticle, bulletSparksParticle;
     public Animator anim;
     RaycastHit hit;
     [HideInInspector] public int currentClips;
@@ -95,6 +95,7 @@ public class AutoFire : MonoBehaviour
                 if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Enemy") || hit.transform.gameObject.layer == LayerMask.NameToLayer("Box"))
                 {
                     hit.transform.GetComponent<EnemyStats>().TakeDamage(weaponDamage);
+                    Instantiate(bulletSparksParticle, hit.point, Quaternion.LookRotation(hit.normal));
                 }
                 else if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Ground"))
                 {
