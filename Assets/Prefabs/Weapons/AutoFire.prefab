@@ -2598,7 +2598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 367424e0d0b6788b3a15829365d41fa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDamage: 3
+  weaponDamage: 4
   maxAmmo: 50
   loadTime: 0.5
   reloadTime: 0.1
@@ -4217,6 +4217,7 @@ MonoBehaviour:
   currentAmmo: 0
   maxAmmo: 0
   maxClips: 0
+  currentClips: 0
 --- !u!1 &8334117243026822745
 GameObject:
   m_ObjectHideFlags: 0

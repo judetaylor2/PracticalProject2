@@ -2846,7 +2846,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa2234884be917ca3bbb2fb0023a160e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponDamage: 40
+  weaponDamage: 35
   maxAmmo: 5
   loadTime: 1
   reloadTime: 3
@@ -3480,6 +3480,7 @@ MonoBehaviour:
   currentAmmo: 0
   maxAmmo: 0
   maxClips: 0
+  currentClips: 0
 --- !u!1 &8334117243026822745
 GameObject:
   m_ObjectHideFlags: 0
@@ -3654,13 +3655,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ab8d8660aed4e5b79a22a22accd72da, type: 3}
---- !u!198 &4336729014737201400 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 4612335529076780157, guid: 9ab8d8660aed4e5b79a22a22accd72da, type: 3}
-  m_PrefabInstance: {fileID: 8947920967078937733}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3997683443828597086 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5429082064263554523, guid: 9ab8d8660aed4e5b79a22a22accd72da, type: 3}
+  m_PrefabInstance: {fileID: 8947920967078937733}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &4336729014737201400 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4612335529076780157, guid: 9ab8d8660aed4e5b79a22a22accd72da, type: 3}
   m_PrefabInstance: {fileID: 8947920967078937733}
   m_PrefabAsset: {fileID: 0}

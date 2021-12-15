@@ -10,7 +10,7 @@ public class WeaponSelector : MonoBehaviour
     List<GameObject> weaponUIObjects = new List<GameObject>();
 
     public GameObject currentWeaponUIObject;
-    GameObject currentWeapon;
+    [HideInInspector] public GameObject currentWeapon;
     int currentWeaponIndex;
     bool hasWeapon;
     public Gradient ammoColours;

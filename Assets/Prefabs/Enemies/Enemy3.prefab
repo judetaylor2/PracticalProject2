@@ -127,10 +127,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cc1826addc91564ea4189a05329ce87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 1
-  moveSpeed: 50
+  attackDamage: 2
+  moveSpeed: 100
   rotateSpeed: 25
-  radiusTrigger: 60
+  radiusTrigger: 45
   attackTrigger: 7
   shootTrigger: 0
   attackDelay: 2

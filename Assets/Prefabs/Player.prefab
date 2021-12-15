@@ -1900,8 +1900,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63033e5ad81bbb9479ef1c15dcbd9cbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  regularMoveSpeed: 125
-  duckMoveSpeed: 60
+  regularMoveSpeed: 100
+  duckMoveSpeed: 45
   jumpHeight: 1000
   duckHeight: 0.3
   initialGravity: 50
@@ -1932,6 +1932,7 @@ MonoBehaviour:
   weaponTransform: {fileID: 5355481397337098567}
   playerWeapons: []
   currentWeaponUIObject: {fileID: 0}
+  currentWeapon: {fileID: 0}
   ammoColours:
     serializedVersion: 2
     key0: {r: 1, g: 0, b: 0, a: 1}

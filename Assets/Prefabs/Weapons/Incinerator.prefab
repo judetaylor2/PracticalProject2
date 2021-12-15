@@ -2204,8 +2204,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.4533567, z: 5.466962}
-  m_Center: {x: 0, y: 0.22667848, z: 2.9155974}
+  m_Size: {x: 1, y: 1.4533567, z: 6.6338344}
+  m_Center: {x: 0, y: 0.22667849, z: 3.4990337}
 --- !u!95 &8012801017406399409
 Animator:
   serializedVersion: 3
@@ -2335,6 +2335,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentAmmo: 0
   maxAmmo: 0
+  maxClips: 0
+  currentClips: 0
 --- !u!1 &8012801017429791493
 GameObject:
   m_ObjectHideFlags: 0

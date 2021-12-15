@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8506bbf4bf1ccbc5d89749fbeb7dfcf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 75
+  maxHealth: 50
   hitSound: {fileID: -8963714419067127869}
 --- !u!114 &-5201877042742757061
 MonoBehaviour:
@@ -65,8 +65,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 949f199e7df84cf418cfb3a219d0cd66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 4
-  moveSpeed: 15000
+  attackDamage: 2
+  moveSpeed: 12500
   rotateSpeed: 25
   radiusTrigger: 30
   attackTrigger: 2
@@ -78,7 +78,7 @@ MonoBehaviour:
     m_Bits: 1024
   shootPoint: {fileID: 4173715679367631063}
   EnemyProjectile: {fileID: 4599766922620992735, guid: 8cfdad4a4c5bd274d9f6213707b4a15e, type: 3}
-  weaponDelay: 2
+  weaponDelay: 3
   shootParticle: {fileID: 7526718996660614629}
   bulletParticle: {fileID: 198000013440722320, guid: 02a509a7fa70ed740ba4197e20c5d32d, type: 3}
   groundMask:
@@ -174,7 +174,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 4
+  m_Speed: 6
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

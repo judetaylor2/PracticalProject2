@@ -97,7 +97,7 @@ public class ShockwaveBlaster : MonoBehaviour
                 {
                     if (CheckRay(i))
                     {
-                        if (hit[0].transform.gameObject.layer == LayerMask.NameToLayer("Enemy") || hit[0].transform.gameObject.layer == LayerMask.NameToLayer("Box") && isFirstShot)
+                        if (i == 0 && hit[0].transform.gameObject.layer == LayerMask.NameToLayer("Enemy") || hit[0].transform.gameObject.layer == LayerMask.NameToLayer("Box") && isFirstShot)
                         {
                             hit[0].transform.GetComponent<EnemyStats>().TakeDamage(Mathf.Clamp((weaponDamage) - (int) Vector3.Distance(transform.position, hit[0].transform.position), 0, weaponDamage));
                             Debug.Log("weapon damage: " + (Mathf.Clamp((weaponDamage) - (int) Vector3.Distance(transform.position, hit[0].transform.position), 0, 50)));

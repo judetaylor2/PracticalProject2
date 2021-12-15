@@ -48,7 +48,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9a18366da9a71c4aa3a751e1b0331bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoType: neonpistol
   clipsAmount: 0
 --- !u!33 &3913465923247768971
 MeshFilter:

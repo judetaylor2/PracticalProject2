@@ -13,7 +13,7 @@ public class Enemy2 : Enemy1
 
     public int attackType;
     
-    float weaponStopWatch;
+    protected float weaponStopWatch;
 
     // Start is called before the first frame update
     public override void Start()

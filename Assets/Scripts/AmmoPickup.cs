@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AmmoPickup : MonoBehaviour
 {
-    public string ammoType;
+    //public string ammoType;
     public int clipsAmount;
     AudioSource healthSound;
     BoxCollider healthCollider;
@@ -30,56 +30,54 @@ public class AmmoPickup : MonoBehaviour
     {
         PlayerStats p;
         if (other.TryGetComponent<PlayerStats>(out p))
-        {
-            string[] s = {"autofire","blastcannon","incinerator","neonpistol","plasmadestroyer","shockwaveblaster","lightningblade"};
-
-            if (ammoType == "random")
+        {   
+        
+            if (other.GetComponent<WeaponSelector>().currentWeapon.GetComponent<WeaponStats>())
             {
-                ammoType = s[Random.Range(0, s.Length)];
-            }
-            
-            foreach (GameObject g in other.GetComponent<WeaponSelector>().playerWeapons)
-            {
+                GameObject g = other.GetComponent<WeaponSelector>().currentWeapon;
+                
                 if (g.GetComponent<WeaponStats>().currentAmmo < g.GetComponent<WeaponStats>().maxAmmo)
                 {
-                    if (g.GetComponent<WeaponStats>().GetComponent<AutoFire>() && ammoType == "autofire" && g.GetComponent<WeaponStats>().currentClips < g.GetComponent<WeaponStats>().maxClips)
+                    if (g.GetComponent<WeaponStats>().GetComponent<AutoFire>() && g.GetComponent<WeaponStats>().currentClips < g.GetComponent<WeaponStats>().maxClips)
                     {
                         g.GetComponent<WeaponStats>().GetComponent<AutoFire>().currentClips++;
                         DestroyPickup();
                     }
-                    else if (g.GetComponent<WeaponStats>().GetComponent<BlastCannon>() && ammoType == "blastcannon" && g.GetComponent<WeaponStats>().currentClips < g.GetComponent<WeaponStats>().maxClips)
+                    else if (g.GetComponent<WeaponStats>().GetComponent<BlastCannon>() && g.GetComponent<WeaponStats>().currentClips < g.GetComponent<WeaponStats>().maxClips)
                     {
                         g.GetComponent<WeaponStats>().GetComponent<BlastCannon>().currentClips++;
                         DestroyPickup();
                     }
-                    else if (g.GetComponent<WeaponStats>().GetComponent<Incinerator>() && ammoType == "incinerator")
+                    else if (g.GetComponent<WeaponStats>().GetComponent<Incinerator>())
                     {
                         g.GetComponent<WeaponStats>().GetComponent<Incinerator>().Reload();
                         DestroyPickup();
                     }
-                    else if (g.GetComponent<WeaponStats>().GetComponent<MissileLauncher>() && ammoType == "missilelauncher" && g.GetComponent<WeaponStats>().currentClips < g.GetComponent<WeaponStats>().maxClips)
+                    else if (g.GetComponent<WeaponStats>().GetComponent<MissileLauncher>() && g.GetComponent<WeaponStats>().currentClips < g.GetComponent<WeaponStats>().maxClips)
                     {
                         g.GetComponent<WeaponStats>().GetComponent<MissileLauncher>().currentClips++;
                         DestroyPickup();
                     }
-                    else if (g.GetComponent<WeaponStats>().GetComponent<NeonPistol>() && ammoType == "neonpistol" && g.GetComponent<WeaponStats>().currentClips < g.GetComponent<WeaponStats>().maxClips)
+                    else if (g.GetComponent<WeaponStats>().GetComponent<NeonPistol>() && g.GetComponent<WeaponStats>().currentClips < g.GetComponent<WeaponStats>().maxClips)
                     {
                         g.GetComponent<WeaponStats>().GetComponent<NeonPistol>().currentClips++;
                         DestroyPickup();
                     }
-                    else if (g.GetComponent<WeaponStats>().GetComponent<PlasmaDestroyer>() && ammoType == "plasmadestroyer")
+                    else if (g.GetComponent<WeaponStats>().GetComponent<PlasmaDestroyer>())
                     {
                         g.GetComponent<WeaponStats>().GetComponent<PlasmaDestroyer>().Reload();
                         DestroyPickup();
                     }
-                    else if (g.GetComponent<WeaponStats>().GetComponent<ShockwaveBlaster>() && ammoType == "shockwaveblaster" && g.GetComponent<WeaponStats>().currentClips < g.GetComponent<WeaponStats>().maxClips)
+                    else if (g.GetComponent<WeaponStats>().GetComponent<ShockwaveBlaster>() && g.GetComponent<WeaponStats>().currentClips < g.GetComponent<WeaponStats>().maxClips)
                     {
                         g.GetComponent<WeaponStats>().GetComponent<ShockwaveBlaster>().currentClips++;
                         DestroyPickup();
                     }
                     
                 }
+                
             }
+            
 
         
             

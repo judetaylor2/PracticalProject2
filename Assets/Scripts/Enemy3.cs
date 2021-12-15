@@ -16,9 +16,16 @@ public class Enemy3 : Enemy2
         bool playerInAttackRange = Physics.CheckSphere(transform.position, attackTrigger, playerMask);
         bool playerInFollowRange = Physics.CheckSphere(transform.position, radiusTrigger, playerMask);
         
+        weaponStopWatch += Time.deltaTime;
+        
         if (playerInFollowRange)
         {
-            Attack(attackType);
+            if (weaponStopWatch >= weaponDelay)
+            {
+                Attack(attackType);
+                
+            }
+            
             transform.LookAt(playerStats.transform);
             
             if (!playerInAttackRange)
