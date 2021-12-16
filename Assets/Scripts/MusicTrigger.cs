@@ -17,7 +17,10 @@ public class MusicTrigger : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player" && !hasCollided)
-        musicManager.PlaySound(music);
-        hasCollided = true;
+        {
+            musicManager.PlaySound(music);
+            hasCollided = true;
+
+        }
     }
 }
