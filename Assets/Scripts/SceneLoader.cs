@@ -10,11 +10,7 @@ public class SceneLoader : MonoBehaviour
         if (other.tag == "Player")
         {
             Debug.Log("Loading Next scene");
-
-            if (SceneManager.GetSceneByBuildIndex(SceneManager.GetActiveScene().buildIndex + 1).IsValid())
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            else
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene(0);
         }
     }
 }

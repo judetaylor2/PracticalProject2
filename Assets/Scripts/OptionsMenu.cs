@@ -10,7 +10,8 @@ public class OptionsMenu : MonoBehaviour
     //public Slider MusicSlider, soundEffectSlider;
     public AudioMixer mainMixer;
     public AudioSource volumeTest1, volumeTest2;
-    public PostProcessVolume postProcessVolume; 
+    public PostProcessVolume postProcessVolume;
+    public CameraController cameraController; 
     MotionBlur motionBlur;
 
     public void ChangeMusicVolume(float amount)
@@ -44,5 +45,10 @@ public class OptionsMenu : MonoBehaviour
         motionBlur.active = false;
         else if (i == 1)
         motionBlur.active = true;
+    }
+
+    public void ChangeSensitivity(float amount)
+    {
+        cameraController.mouseSensitivity = amount;
     }
 }
