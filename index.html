@@ -9,7 +9,7 @@
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width=960 height=600></canvas>
+      <canvas id="unity-canvas" width=1280 height=720></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
         <div id="unity-progress-bar-empty">
@@ -27,11 +27,11 @@
     </div>
     <script>
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/PracticalProject2_Build.loader.js";
+      var loaderUrl = buildUrl + "/BotStorm.loader.js";
       var config = {
-        dataUrl: buildUrl + "/PracticalProject2_Build.data",
-        frameworkUrl: buildUrl + "/PracticalProject2_Build.framework.js",
-        codeUrl: buildUrl + "/PracticalProject2_Build.wasm",
+        dataUrl: buildUrl + "/BotStorm.data.unityweb",
+        frameworkUrl: buildUrl + "/BotStorm.framework.js.unityweb",
+        codeUrl: buildUrl + "/BotStorm.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "PracticalProject2",
@@ -62,8 +62,8 @@
           mobileWarning.style.display = "none";
         }, 5000);
       } else {
-        canvas.style.width = "960px";
-        canvas.style.height = "600px";
+        canvas.style.width = "1280px";
+        canvas.style.height = "720px";
       }
       loadingBar.style.display = "block";
 
